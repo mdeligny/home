@@ -7,7 +7,6 @@ import homeassistant.helpers.config_validation as cv
 import requests
 from pprint import pformat  # here only for aesthetic
 
-
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required('username'): cv.string,
     vol.Required('password'): cv.string,
@@ -57,28 +56,41 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     print('Server response: \n {0}'.format(pformat(response)))
 
     locations = response['locations']
+    devices = []
+
     for location in locations:
         print('location: \n {0}'.format(pformat(location)))
         light = location['light']['gauge_values']['current_value']
+        devices.append(FlowerPowerSensor(light, 'lux', 'Flower power light sensor'))
+
         air_temperature = location['air_temperature']['gauge_values']['current_value']
+        devices.append(FlowerPowerSensor(air_temperature, TEMP_CELSIUS, 'Flower power temperature sensor'))
+
         fertilizer = location['fertilizer']['gauge_values']['current_value']
+        devices.append(FlowerPowerSensor(fertilizer, 'dS/m', 'Flower power fertilizer sensor'))
+
         watering = location['watering']['automatic_watering']['gauge_values']['current_value']
+        devices.append(FlowerPowerSensor(watering, '%', 'Flower power watering sensor'))
+
         soil_moisture = location['watering']['soil_moisture']['gauge_values']['current_value']
+        devices.append(FlowerPowerSensor(soil_moisture, '%', 'Flower power humidity sensor'))
 
-        add_devices([FlowerPowerTemperatureSensor(air_temperature), FlowerPowerHumiditySensor(soil_moisture)])
+        add_devices(devices)
 
 
-class FlowerPowerTemperatureSensor(Entity):
+class FlowerPowerSensor(Entity):
     """Representation of a Sensor."""
 
-    def __init__(self, temperature):
+    def __init__(self, state, unit_of_measurement, name):
         """Initialize the sensor."""
-        self._state = temperature
+        self._state = state
+        self._unit_of_measurement = unit_of_measurement
+        self._name = name
 
     @property
     def name(self):
         """Return the name of the sensor."""
-        return 'Flower power temperature sensor'
+        return self._name
 
     @property
     def state(self):
@@ -88,40 +100,11 @@ class FlowerPowerTemperatureSensor(Entity):
     @property
     def unit_of_measurement(self):
         """Return the unit of measurement."""
-        return TEMP_CELSIUS
+        return self._unit_of_measurement
 
     def update(self):
         """Fetch new state data for the sensor.
 
         This is the only method that should fetch new data for Home Assistant.
         """
-        self._state = temperature
-
-class FlowerPowerHumiditySensor(Entity):
-    """Representation of a Sensor."""
-
-    def __init__(self, soil_moisture):
-        """Initialize the sensor."""
-        self._state = soil_moisture
-
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return 'Flower power humidity sensor'
-
-    @property
-    def state(self):
-        """Return the state of the sensor."""
-        return self._state
-
-    @property
-    def unit_of_measurement(self):
-        """Return the unit of measurement."""
-        return '%'
-
-    def update(self):
-        """Fetch new state data for the sensor.
-
-        This is the only method that should fetch new data for Home Assistant.
-        """
-        self._state = soil_moisture
+        self._state = state
