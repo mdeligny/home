@@ -9,6 +9,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 import async_timeout
 import aiohttp
 from homeassistant.exceptions import PlatformNotReady
+from datetime import datetime, timedelta
 
 
 import requests
@@ -26,6 +27,7 @@ DEFAULT_ENDPOINT = 'https://api-flower-power-pot.parrot.com/{uri}'
 AUTHENTICATION_ENDPOINT = 'user/v1/authenticate'
 PROFILE_ENDPOINT = 'user/v4/profile'
 GARDEN_ENDPOINT = 'garden/v1/status'
+LOCATION_SAMPLE_ENDPOINT = 'sensor_data/v6/sample/location/{location_id}?from_datetime_utc={from_datetime_utc}&to_datetime_utc={to_datetime_utc}'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -38,11 +40,9 @@ class SensorRequestError(Exception):
 @asyncio.coroutine
 def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
 
-    # First we set our credentials
     username = config.get('username')
     password = config.get('password')
 
-    # From the developer portal
     client_id = config.get('clientid')
     client_secret = config.get('clientsecret')
 
@@ -77,20 +77,37 @@ def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
 
     for location in locations:
         location_id = location['location_identifier']
-        light = location['light']['gauge_values']['current_value']
+
+        to_datetime_utc = datetime.utcnow()
+        from_datetime_utc = to_datetime_utc - timedelta(10)
+
+        _LOGGER.debug("fetching data from %s to %s",from_datetime_utc, to_datetime_utc)
+        with async_timeout.timeout(REQUEST_TIMEOUT, loop=hass.loop):
+            req = yield from session.get(DEFAULT_ENDPOINT.format(uri=LOCATION_SAMPLE_ENDPOINT.format(location_id=location_id,from_datetime_utc=from_datetime_utc,to_datetime_utc=to_datetime_utc)),
+                           headers=HEADERS)
+
+        response = yield from req.json()
+
+        latest_sample = response['samples'][-1]
+
+        """ We have to do math about the light captor because Parrot doesn't send correct data"""
+        light = round(latest_sample['light']*14/3,2)
         devices.append(FlowerPowerSensor(hass, light, 'lux', 'Flower power light sensor', 'light', location_id, HEADERS))
 
-        air_temperature = location['air_temperature']['gauge_values']['current_value']
+        air_temperature = round(latest_sample['air_temperature_celsius'],2)
         devices.append(FlowerPowerSensor(hass, air_temperature, TEMP_CELSIUS, 'Flower power temperature sensor', 'air_temperature', location_id, HEADERS))
 
-        fertilizer = location['fertilizer']['gauge_values']['current_value']
+        fertilizer = round(latest_sample['fertilizer_level'],2)
         devices.append(FlowerPowerSensor(hass, fertilizer, 'dS/m', 'Flower power fertilizer sensor', 'fertilizer', location_id, HEADERS))
 
-        watering = location['watering']['automatic_watering']['gauge_values']['current_value']
+        watering = round(latest_sample['water_tank_level_percent'],2)
         devices.append(FlowerPowerSensor(hass, watering, '%', 'Flower power watering sensor', 'automatic_watering', location_id, HEADERS))
 
-        soil_moisture = location['watering']['soil_moisture']['gauge_values']['current_value']
+        soil_moisture = round(latest_sample['soil_moisture_percent'],2)
         devices.append(FlowerPowerSensor(hass, soil_moisture, '%', 'Flower power humidity sensor', 'soil_moisture', location_id, HEADERS))
+
+        battery = round(latest_sample['battery_percent'],2)
+        devices.append(FlowerPowerSensor(hass, battery, '%', 'Flower power battery level', 'battery', location_id, HEADERS))
 
     _LOGGER.debug("Set up successful")
     async_add_devices(devices, True)
@@ -101,28 +118,33 @@ def async_sensor_request(hass, location_id, sensor_type, HEADERS):
 
     session = async_get_clientsession(hass)
 
+    to_datetime_utc = datetime.utcnow()
+    from_datetime_utc = to_datetime_utc - timedelta(10)
+
+    _LOGGER.debug("fetching data from %s to %s",from_datetime_utc, to_datetime_utc)
     with async_timeout.timeout(REQUEST_TIMEOUT, loop=hass.loop):
-        req = yield from session.get(DEFAULT_ENDPOINT.format(uri=GARDEN_ENDPOINT),
+        req = yield from session.get(DEFAULT_ENDPOINT.format(uri=LOCATION_SAMPLE_ENDPOINT.format(location_id=location_id,from_datetime_utc=from_datetime_utc,to_datetime_utc=to_datetime_utc)),
                        headers=HEADERS)
 
     response = yield from req.json()
 
-    locations = response['locations']
+    latest_sample = response['samples'][-1]
 
-    for location in locations:
-        if location['location_identifier'] == location_id:
-            if sensor_type == 'light':
-                return location['light']['gauge_values']['current_value']
-            elif sensor_type == 'air_temperature':
-                return location['air_temperature']['gauge_values']['current_value']
-            elif sensor_type == 'fertilizer':
-                return location['fertilizer']['gauge_values']['current_value']
-            elif sensor_type == 'automatic_watering':
-                return location['watering']['automatic_watering']['gauge_values']['current_value']
-            elif sensor_type == 'soil_moisture':
-                return location['watering']['soil_moisture']['gauge_values']['current_value']
+    _LOGGER.debug("latest sample was on %s", latest_sample['capture_datetime_utc'])
 
-    return 0
+    if not latest_sample:
+        return 0
+
+    """ We have to do math about the light captor because Parrot doesn't send correct data"""
+    return {
+        'light': round(latest_sample['light']*14/3,2),
+        'air_temperature': round(latest_sample['air_temperature_celsius'],2),
+        'fertilizer': round(latest_sample['fertilizer_level'],2),
+        'automatic_watering': round(latest_sample['water_tank_level_percent'],2),
+        'soil_moisture': round(latest_sample['soil_moisture_percent'],2),
+        'battery': round(latest_sample['battery_percent'],2)
+    }[sensor_type]
+
 
 
 class FlowerPowerSensor(Entity):
@@ -153,6 +175,18 @@ class FlowerPowerSensor(Entity):
     def unit_of_measurement(self):
         """Return the unit of measurement."""
         return self._unit_of_measurement
+
+    @property
+    def icon(self):
+        """Return the icon to display."""
+        return {
+            'light': 'mdi:weather-sunny',
+            'air_temperature': 'mdi:thermometer',
+            'fertilizer': 'mdi:fuel',
+            'automatic_watering': 'mdi:cup-water',
+            'soil_moisture': 'mdi:water-percent',
+            'battery': 'mdi:battery'
+        }[self._sensor_type]
 
     @asyncio.coroutine
     def async_update(self):
