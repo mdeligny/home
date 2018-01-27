@@ -11,10 +11,6 @@ import aiohttp
 from homeassistant.exceptions import PlatformNotReady
 from datetime import datetime, timedelta
 
-
-import requests
-from pprint import pformat  # here only for aesthetic
-
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required('username'): cv.string,
     vol.Required('password'): cv.string,
@@ -91,22 +87,22 @@ def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
         latest_sample = response['samples'][-1]
 
         """ We have to do math about the light captor because Parrot doesn't send correct data"""
-        light = round(latest_sample['light']*14/3,2)
+        light = round(latest_sample['light']*14000/3)
         devices.append(FlowerPowerSensor(hass, light, 'lux', 'Flower power light sensor', 'light', location_id, HEADERS))
 
-        air_temperature = round(latest_sample['air_temperature_celsius'],2)
+        air_temperature = round(latest_sample['air_temperature_celsius'],1)
         devices.append(FlowerPowerSensor(hass, air_temperature, TEMP_CELSIUS, 'Flower power temperature sensor', 'air_temperature', location_id, HEADERS))
 
-        fertilizer = round(latest_sample['fertilizer_level'],2)
+        fertilizer = round(latest_sample['fertilizer_level'],1)
         devices.append(FlowerPowerSensor(hass, fertilizer, 'dS/m', 'Flower power fertilizer sensor', 'fertilizer', location_id, HEADERS))
 
-        watering = round(latest_sample['water_tank_level_percent'],2)
+        watering = round(latest_sample['water_tank_level_percent'])
         devices.append(FlowerPowerSensor(hass, watering, '%', 'Flower power watering sensor', 'automatic_watering', location_id, HEADERS))
 
-        soil_moisture = round(latest_sample['soil_moisture_percent'],2)
+        soil_moisture = round(latest_sample['soil_moisture_percent'])
         devices.append(FlowerPowerSensor(hass, soil_moisture, '%', 'Flower power humidity sensor', 'soil_moisture', location_id, HEADERS))
 
-        battery = round(latest_sample['battery_percent'],2)
+        battery = round(latest_sample['battery_percent'])
         devices.append(FlowerPowerSensor(hass, battery, '%', 'Flower power battery level', 'battery', location_id, HEADERS))
 
     _LOGGER.debug("Set up successful")
@@ -137,12 +133,12 @@ def async_sensor_request(hass, location_id, sensor_type, HEADERS):
 
     """ We have to do math about the light captor because Parrot doesn't send correct data"""
     return {
-        'light': round(latest_sample['light']*14/3,2),
-        'air_temperature': round(latest_sample['air_temperature_celsius'],2),
-        'fertilizer': round(latest_sample['fertilizer_level'],2),
-        'automatic_watering': round(latest_sample['water_tank_level_percent'],2),
-        'soil_moisture': round(latest_sample['soil_moisture_percent'],2),
-        'battery': round(latest_sample['battery_percent'],2)
+        'light': round(latest_sample['light']*14000/3),
+        'air_temperature': round(latest_sample['air_temperature_celsius'],1),
+        'fertilizer': round(latest_sample['fertilizer_level'],1),
+        'automatic_watering': round(latest_sample['water_tank_level_percent']),
+        'soil_moisture': round(latest_sample['soil_moisture_percent']),
+        'battery': round(latest_sample['battery_percent'])
     }[sensor_type]
 
 
