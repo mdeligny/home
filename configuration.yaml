@@ -13,9 +13,6 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
-# Show links to resources in log and frontend
-introduction:
-
 # Enables the frontend
 frontend:
 
@@ -50,19 +47,12 @@ history:
 logbook:
 
 logger:
-  default: critical
-  logs:
-    homeassistant.components.flower_power: debug
 
 # Enables a map showing the location of tracked devices
 map:
 
-# Track the sun
-sun:
-
 # Weather prediction
 sensor:
-  - platform: yr
   - platform: flower_power
     username: rojowstyle@gmail.com
     password: !secret flower_power_pwd
