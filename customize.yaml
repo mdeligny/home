@@ -1,0 +1,14 @@
+group.ficus:
+  friendly_name: Ficus
+sensor.ficus_battery_level:
+  friendly_name: Batterie
+sensor.ficus_fertilizer_sensor:
+  friendly_name: Engrais
+sensor.ficus_humidity_sensor:
+  friendly_name: Humidité de la terre
+sensor.ficus_light_sensor:
+  friendly_name: Luminosité
+sensor.ficus_temperature_sensor:
+  friendly_name: Température
+sensor.ficus_watering_sensor:
+  friendly_name: Réservoir d'eau

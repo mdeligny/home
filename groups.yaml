@@ -1,0 +1,11 @@
+ficus:
+  name: ficus
+  view: no
+  icon: mdi:flower
+  entities:
+    - sensor.ficus_battery_level
+    - sensor.ficus_fertilizer_sensor
+    - sensor.ficus_humidity_sensor
+    - sensor.ficus_light_sensor
+    - sensor.ficus_temperature_sensor
+    - sensor.ficus_watering_sensor
