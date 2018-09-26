@@ -1,0 +1,35 @@
+- name: OFF
+  entities:
+    group.lumiere_salon: off
+    group.lumiere_cuisine: off
+    group.lumiere_chambre: off
+    media_player.salon: off
+- name: Soir
+  entities:
+    switch.canape: on
+    switch.salon: on
+- name: Film
+  entities:
+    switch.canape: off
+    switch.salon: on
+    switch.table: off
+    group.lumiere_cuisine: off
+    light.gateway_light_7811dcb7e440:
+      state: on
+      rgb_color: [0,191,255]
+      brightness: 255
+- name: Nuit
+  entities:
+    group.lumiere_salon: off
+    group.lumiere_cuisine: off
+    media_player.salon: off
+- name: Salon ON
+  entities:
+    switch.canape: on
+    switch.table: on
+    switch.salon: on
+- name: Salon OFF
+  entities:
+    switch.canape: off
+    switch.table: off
+    switch.salon: off

@@ -1,0 +1,142 @@
+'1515942871785':
+  alias: Diner entre amis
+  sequence:
+  - data:
+      entity_id: switch.tele_du_salon
+    service: switch.turn_on
+  - data:
+      entity_id: media_player.salon
+      media_content_id: https://www.youtube.com/watch?v=vDX-AK7enO8
+      media_content_type: video/youtube
+    service: media_extractor.play_media
+  - data:
+      entity_id: script.1516561192028
+    service: script.turn_on
+  - data:
+      entity_id: media_player.spotify
+      media_content_id: spotify:user:spotify:playlist:37i9dQZF1DX915ogFalrko
+      media_content_type: playlist
+    service: media_player.play_media
+  - alias: ''
+    data:
+      entity_id: switch.canape
+    service: switch.turn_on
+  - data:
+      entity_id: switch.salon
+    service: switch.turn_on
+'1516560084710':
+  alias: TV volume +
+  sequence:
+  - data:
+      packet:
+      - JgCIAAABJZIUEhMTEhMTExMTExISFBMTEzcSNxM3EzcTNhM3EzcTExITEzcTNxM2EjgTExMTExITNxMTExITExMTEzcSNxM3EwAFHQABJkkTAAw4AAElShQADDgAASVJEwAMOQABJUoSAAw5AAEmSRIADDkAASZJEwAMOAABJkkSAAw5AAElShQADQU=
+    service: switch.broadlink_send_packet_192_168_1_18
+'1516560429398':
+  alias: TV volume -
+  sequence:
+  - data:
+      packet:
+      - JgCIAAABJZEUEhMTExMSExMTExMSExUSEjcTNxI3EzcTNxM2EzcTExM3EjcTNxM3EzYTExI4ExMSExMUEhMTEhMTEzcTExI3EwAFHgABJUoTAAw4AAElShMADDgAASVKEwAMOAABJUoTAAw4AAElShMADDgAASVKEwAMOAABJUoTAAw4AAEmSRMADQU=
+    service: switch.broadlink_send_packet_192_168_1_18
+'1516561192028':
+  alias: TV HDMI 3
+  sequence:
+  - data:
+      packet:
+      - JgBYAAABJZITExITExMTExMTEhMWEBMTEzYTNxM3FTUTNhM3EzcTExI3ExMVERQREhQSFBMSExMSFBQ2EjcTNxM3EzYTNxQ2EwAFHQABJUoTAAw4AAEmSRMADQU=
+    service: switch.broadlink_send_packet_192_168_1_18
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJpEUEhITExMTExUQEhQTExMTEjcTNxM3EzYTNxM3EzcTEhI4EzcTEhMTEzcUEhI3ExMTExMSEzcTNxQSEjcTExM3EwAFHQABJUoTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_18
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZITExMSExMTExMTEhMTExMTEzYTNxM3FTUSNxM3FTUTEhMTEzcTNxI3EzcTExM2ExMTNxUREhMTExMTEzYTExM3EwAFHQABJkkTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_18
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZITExMSExMTExMTEhMTExMTEzYTNxM3FTUSNxM3FTUTEhMTEzcTNxI3EzcTExM2ExMTNxUREhMTExMTEzYTExM3EwAFHQABJkkTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_18
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZITExMSExMTExMTEhMTExMTEzYTNxM3FTUSNxM3FTUTEhMTEzcTNxI3EzcTExM2ExMTNxUREhMTExMTEzYTExM3EwAFHQABJkkTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_18
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZETExMUEhMSExIUFBITExQRFDYTNxI3EzcUNhQ1EzcUEhIUEzYUEhM3EzYUEhM3ExMVNBMTEzcTEhQSEjgTExI3EwAFHgABJUoUAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_18
+'1516562409619':
+  alias: TV HDMI 2
+  sequence:
+  - data:
+      packet:
+      - JgBYAAABJZITExITExMTExMTEhMWEBMTEzYTNxM3FTUTNhM3EzcTExI3ExMVERQREhQSFBMSExMSFBQ2EjcTNxM3EzYTNxQ2EwAFHQABJUoTAAw4AAEmSRMADQU=
+    service: switch.broadlink_send_packet_192_168_1_18
+  - delay:
+      milliseconds: 20
+  - data:
+      packet:
+      - JgBQAAABJpEUEhITExMTExUQEhQTExMTEjcTNxM3EzYTNxM3EzcTEhI4EzcTEhMTEzcUEhI3ExMTExMSEzcTNxQSEjcTExM3EwAFHQABJUoTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_18
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZITExMSExMTExMTEhMTExMTEzYTNxM3FTUSNxM3FTUTEhMTEzcTNxI3EzcTExM2ExMTNxUREhMTExMTEzYTExM3EwAFHQABJkkTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_18
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZITExMSExMTExMTEhMTExMTEzYTNxM3FTUSNxM3FTUTEhMTEzcTNxI3EzcTExM2ExMTNxUREhMTExMTEzYTExM3EwAFHQABJkkTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_18
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZITExMSExMTExMTEhMTExMTEzYTNxM3FTUSNxM3FTUTEhMTEzcTNxI3EzcTExM2ExMTNxUREhMTExMTEzYTExM3EwAFHQABJkkTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_18
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZITExMSExMTExMTEhMTExMTEzYTNxM3FTUSNxM3FTUTEhMTEzcTNxI3EzcTExM2ExMTNxUREhMTExMTEzYTExM3EwAFHQABJkkTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_18
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZETExMUEhMSExIUFBITExQRFDYTNxI3EzcUNhQ1EzcUEhIUEzYUEhM3EzYUEhM3ExMVNBMTEzcTEhQSEjgTExI3EwAFHgABJUoUAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_18
+'1518951300107':
+  alias: Faire un feu
+  sequence:
+  - data:
+      entity_id: media_player.salon
+      media_content_id: https://www.youtube.com/watch?v=vDX-AK7enO8
+      media_content_type: video/youtube
+    service: media_extractor.play_media
+  - data:
+      entity_id: script.1516561192028
+    service: script.turn_on
+'1519237132719':
+  alias: Aquarium
+  sequence:
+  - data:
+      entity_id: media_player.salon
+      media_content_id: https://www.youtube.com/watch?v=qdUOH3GeqxY
+      media_content_type: video/youtube
+    service: media_extractor.play_media
+  - data:
+      entity_id: script.1516561192028
+    service: script.turn_on

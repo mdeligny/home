@@ -1,0 +1,4 @@
+- platform: rfxtrx
+  automatic_add: False
+- platform: workday
+  country: FRA

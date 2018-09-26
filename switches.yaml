@@ -1,0 +1,49 @@
+- platform: rfxtrx
+  automatic_add: False
+  devices:
+    "0710090041010000":
+      name: canape
+    "0710090041020000":
+      name: salon
+    "0710090041030000":
+      name: guirlande
+    "0710090041040000":
+      name: table
+    0b1100310184c6da01010f80:
+      name: led_cuisine
+    0b1100350184c6da02010f70:
+      name: lampe6
+    0b1100360184c6da03010f70:
+      name: lampe7
+
+#- platform: rest
+#  resource: http://192.168.1.30/bose/power
+#  name: bose_power
+#  body_on: '{"active": "true"}'
+#  body_off: '{"active": "false"}'
+#  is_on_template: '{{value_json.active}}'
+
+#- platform: rest
+#  resource: http://192.168.1.30/bose/bluetooth
+#  name: bose_bluetooth
+#  body_on: '{"active": "true"}'
+#  body_off: '{"active": "false"}'
+#  is_on_template: '{{value_json.active}}'
+
+#- platform: rest
+#  resource: http://192.168.1.30/bose/aux
+#  name: bose_aux
+#  body_on: '{"active": "true"}'
+#  body_off: '{"active": "false"}'
+#  is_on_template: '{{value_json.active}}'
+
+- platform: broadlink
+  host: 192.168.1.18
+  mac: '34:ea:34:8e:ef:f0'
+  type: rm_mini
+  timeout: 15
+  switches:
+    tv:
+      friendly_name: "Télé du salon"
+      command_on: 'JgBoAAABKI8VERURFRAVERURFREUERURFTUVNBU1FTUVNBU1FTUVERUQFTUVERU0FREVERURFRAVNRURFTQVERU1FTUVNBU1FQAFGwABKEcVAAw2AAEoRxUADDcAASdHFQAMNwABJ0gUAA0F'
+      command_off: 'JgBoAAABKI8VERURFRAVERURFREUERURFTUVNBU1FTUVNBU1FTUVERUQFTUVERU0FREVERURFRAVNRURFTQVERU1FTUVNBU1FQAFGwABKEcVAAw2AAEoRxUADDcAASdHFQAMNwABJ0gUAA0F'

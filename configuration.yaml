@@ -1,16 +1,14 @@
+#################################################################################
+#                           BASIC CONFIGURATION                                 #
+#################################################################################
+
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Home
-  # Location required to calculate the time the sun rises and sets
-  latitude: 51.5142
-  longitude: -0.0931
-  # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 16
-  # metric for Metric, imperial for Imperial
+  latitude: 50.6634309
+  longitude: 3.0507688
+  elevation: 23
   unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  time_zone: Europe/London
-  # Customization file
+  time_zone: Europe/Paris
   customize: !include customize.yaml
 
 # Enables the frontend
@@ -20,10 +18,12 @@ frontend:
 config:
 
 http:
-  # Secrets are defined in the file secrets.yaml
-  # api_password: !secret http_password
-  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: example.duckdns.org:8123
+  base_url: maoutin.duckdns.org
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  #ip_ban_enabled: True
+  #login_attempts_threshold: 20
+  api_password: !secret http_password
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -42,30 +42,102 @@ conversation:
 
 # Enables support for tracking state changes over time
 history:
+  exclude:
+    entities:
+      - sensor.flower_power_temperature_sensor
+      - sensor.flower_power_battery_level
+      - sensor.flower_power_fertilizer_sensor
+      - sensor.flower_power_humidity_sensor
+      - sensor.flower_power_light_sensor
+      - sensor.flower_power_watering_sensor
+      - sensor.xiaomi_switch_new
+      - sensor.xiaomi_switch_old
+      - sensor.yweather_temperature_min
+      - sensor.yweather_temperature_max
+      - sensor.yw_day3_temperature_min
+      - sensor.yw_day2_temperature_min
+      - sensor.yw_day1_temperature_min
+      - sensor.yw_day3_temperature_max
+      - sensor.yw_day2_temperature_max
+      - sensor.yw_day1_temperature_max
 
 # View all events in a logbook
-logbook:
+# logbook:
 
+# Include iframe in left drawer
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: https://hassio.local:3218
+
+# Log of events
 logger:
+  logs:
+    homeassistant.components: info
+    homeassistant.components.rfxtrx: debug
 
 # Enables a map showing the location of tracked devices
 map:
 
-# Weather prediction
-sensor:
-  - platform: flower_power
-    username: rojowstyle@gmail.com
-    password: !secret flower_power_pwd
-    clientid: rojowstyle@gmail.com
-    clientsecret: !secret flower_power_token
+# Track the sun
+sun:
 
 # Text to speech
 tts:
   - platform: google
+    language: 'fr'
 
 # Cloud
 cloud:
 
+
+#################################################################################
+#                       DEVICES AND INTEGRATIONS                                #
+#################################################################################
+
+# Media
+media_extractor: # Media extractor, used to cast media with a service
+
+media_player:
+#  - platform: spotify
+#    client_id: 39edb7ec9c87422784f04f81fc34b6ea
+#    client_secret: !secret spotify_api_key
+
+# Notifications
+notify:
+  - platform: pushbullet
+    api_key: !secret pushbullet_api_key
+
+# Automation
+ifttt:
+  key: !secret ifttt_api_key
+
+# Hub
+rfxtrx:
+  device: /dev/ttyUSB0
+
+device_tracker:
+  - platform: nmap_tracker
+    hosts: 192.168.1.0/24
+    track_new_devices: no
+    interval_seconds: 20
+#  - platform: bluetooth_tracker
+
+xiaomi_aqara:
+  discovery_retry: 10
+  gateways:
+    - key: !secret xiaomi_aqara_key
+      mac: 78:11:DC:B7:E4:40
+
+#################################################################################
+#                                   INCLUDES                                    #
+#################################################################################
+
+binary_sensor: !include binary_sensors.yaml
+sensor: !include sensors.yaml
+switch: !include switches.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+scene: !include scenes.yaml

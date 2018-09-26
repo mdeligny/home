@@ -1,1 +1,229 @@
-[]
+- action:
+  - data:
+      entity_id: media_player.salon
+    service: media_player.turn_off
+  alias: Eteindre la chromecast quand on éteint la télé
+  condition: []
+  id: '1515937075509'
+  trigger:
+  - entity_id: switch.tele_du_salon
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      message: Mise à jour Home assistant disponible.
+      title: Home assistant
+    service: notify.notify
+  alias: Notify when new version is available
+  trigger:
+  - entity_id: updater.updater
+    platform: state
+  id: 937d2ebfc9c244569834ecdfc9d9fda1
+- action:
+  - data:
+      message: La batterie du pot Parrot est faible !
+      title: Home assistant
+    service: notify.notify
+  alias: Alerte pour la batterie du pot
+  condition: []
+  id: '1517163939771'
+  trigger:
+  - entity_id: sensor.ficus_battery_level
+    from: '11'
+    platform: state
+    to: '10'
+- action:
+  - data:
+      message: Il n'y a plus d'eau dans le pot Parrot
+      title: Home assistant
+    service: notify.notify
+  alias: Alerte sur le niveau d'eau du pot Parrot
+  condition: []
+  id: '1517164056017'
+  trigger:
+  - entity_id: sensor.ficus_watering_sensor
+    from: '11'
+    platform: state
+    to: '10'
+- id: '1517944241887'
+  alias: Allumer les lumières quand le soleil se couche
+  trigger:
+  - event: sunset
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: device_tracker.androidf08fbf0c26decf7ehome
+    state: home
+  action:
+  - data:
+      entity_id: switch.salon
+    service: switch.turn_on
+  - data:
+      entity_id: switch.canape
+    service: switch.turn_on
+  - data:
+      entity_id: switch.guirlande
+    service: switch.turn_on
+- id: '1518719165117'
+  alias: 'Eteindre chauffage SDB '
+  trigger:
+  - above: '22'
+    entity_id: sensor.temperature_158d00022ecfef
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      entity_id: switch.lampe7
+    service: switch.turn_off
+- action:
+  - data:
+      message: L'humidité de la salle de bains a dépassé les 60%
+      title: Salle de bain trop humide
+    service: notify.notify
+  alias: Notif quand sdb trop humide
+  condition: []
+  id: '1524412334022'
+  trigger:
+  - above: '60'
+    entity_id: sensor.humidity_158d00022ecfef
+    platform: numeric_state
+- action:
+  - data:
+      message: Retour à la normale pour l'humidité
+      title: Humidité Salle de bain
+    service: notify.notify
+  alias: Notif quand humidité sdb normale
+  condition: []
+  id: '1524415229795'
+  trigger:
+  - below: '60'
+    entity_id: sensor.humidity_158d00022ecfef
+    platform: numeric_state
+- id: '1526111922386'
+  alias: Switch simple click salon ON
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d000213599d
+    event_type: click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.table
+    state: 'off'
+  action:
+  - data:
+      entity_id: scene.salon_on
+    service: scene.turn_on
+- id: '1526112247604'
+  alias: Switch dble click SAM toggle
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d000213599d
+    event_type: click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: switch.guirlande
+    service: switch.toggle
+- id: '1526112422646'
+  alias: Switch Chambre Lampadaire
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0001e5ca75
+    event_type: click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: switch.led_cuisine
+    service: switch.toggle
+- id: '1534707315306'
+  alias: Eteindre quand assez lumineux
+  trigger:
+  - above: '400'
+    entity_id: sensor.illumination_7811dcb7e440
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      entity_id: group.lumiere_salon
+    service: switch.turn_off
+- id: '1535189541779'
+  alias: Alerte quand porte ouverte si absent
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d0001e444dd
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: device_tracker.androidf08fbf0c26decf7ehome
+    state: not_home
+  action:
+  - data:
+      message: Ouverture de la porte
+      title: Porte d'entré ouverte
+    service: notify.notify
+- id: '1535301669846'
+  alias: Switch simple click salon OFF
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d000213599d
+    event_type: click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.table
+    state: 'on'
+  action:
+  - data:
+      entity_id: scene.salon_off
+    service: scene.turn_on
+- id: '1537815697539'
+  alias: Test ventilo
+  trigger:
+  - at: 07:00:00
+    platform: time
+  condition:
+  - below: '22'
+    condition: numeric_state
+    entity_id: sensor.temperature_158d00022ecfef
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  action:
+  - data:
+      entity_id: switch.lampe7
+    service: switch.turn_on
+- id: '1537866148424'
+  alias: Switch chambre guirlande
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d0001e5ca75
+    event_type: click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: switch.lampe6
+    service: switch.toggle
+- id: '1537866274697'
+  alias: Switch salon OFF
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d000213599d
+    event_type: click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: scene.salon_off
+    service: scene.turn_on

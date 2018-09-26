@@ -1,0 +1,197 @@
+switch.tele_du_salon:
+  friendly_name: On / off
+  icon: mdi:television
+sensor.yr_symbol:
+  friendly_name: Météo
+sun.sun:
+  friendly_name: Soleil
+script.1515942871785:
+  icon: mdi:food-fork-drink
+group.all_automations:
+  friendly_name: Automatisations
+group.all_switches:
+  friendly_name: Tous les boutons
+group.all_lights:
+  friendly_name: Lampes
+  hidden: true
+group.all_scripts: {}
+group.lumiere_salon:
+  friendly_name: Salon
+sensor.meteo_symbol:
+  friendly_name: Météo
+sensor.waqi_lille_fives_nordpasdecalais_france:
+  friendly_name: Qualité de l'air
+switch.guirlande:
+  friendly_name: Lampe salle à manger
+  icon: mdi:lamp
+switch.salon:
+  friendly_name: Guirlande télé
+  icon: mdi:white-balance-sunny
+switch.table:
+  friendly_name: Lampe ciment
+  icon: mdi:lightbulb
+switch.canape:
+  friendly_name: Lampadaire canapé
+  icon: mdi:lamp
+group.tele:
+  friendly_name: TV
+group.lumiere_chambre:
+  friendly_name: Chambre
+  icon: mdi:hotel
+group.scenarios:
+  friendly_name: Scénarios
+group.lumiere_cuisine:
+  friendly_name: Cuisine
+switch.led_cuisine:
+  friendly_name: Lampadaire chambre
+  icon: mdi:lamp
+group.salon:
+  order: 1
+sensor.yweather_pressure:
+  friendly_name: Pression
+sensor.yweather_condition:
+  friendly_name: Météo
+sensor.yweather_humidity:
+  friendly_name: Humidité de l'air
+  icon: mdi:water-percent
+sensor.yweather_temperature:
+  friendly_name: Température extérieure
+sensor.yweather_temperature_max:
+  friendly_name: Température extérieure max
+sensor.yweather_temperature_min:
+  friendly_name: Température extérieure min
+sensor.yweather_wind_speed:
+  friendly_name: Vitesse du vent
+sensor.yweather_current:
+  friendly_name: Météo temps réel
+sensor.yweather_visibility:
+  friendly_name: Visibilité
+script.1516560084710:
+  friendly_name: Volume +
+  icon: mdi:volume-plus
+script.1516560429398:
+  friendly_name: Volume -
+  icon: mdi:volume-minus
+script.1516561192028:
+  friendly_name: HDMI 3
+  icon: mdi:remote
+script.1516562409619:
+  friendly_name: HDMI 2
+  icon: mdi:remote
+sensor.ficus_battery_level:
+  friendly_name: Batterie
+  latitude: 50.6244665
+  longitude: 3.037293399999953
+sensor.ficus_fertilizer_sensor:
+  friendly_name: Engrais
+  latitude: 50.6244665
+  longitude: 3.037293399999953
+sensor.ficus_humidity_sensor:
+  friendly_name: Humidité de la terre
+  latitude: 50.6244665
+  longitude: 3.037293399999953
+sensor.ficus_light_sensor:
+  friendly_name: Luminosité
+  latitude: 50.6244665
+  longitude: 3.037293399999953
+sensor.ficus_temperature_sensor:
+  friendly_name: Température
+  latitude: 50.6244665
+  longitude: 3.037293399999953
+sensor.ficus_watering_sensor:
+  friendly_name: Réservoir d'eau
+  latitude: 50.6244665
+  longitude: 3.037293399999953
+group.ficus:
+  friendly_name: Ficus
+scene.false:
+  friendly_name: 'OFF'
+  icon: mdi:lightbulb-outline
+script.1518951300107:
+  icon: mdi:fire
+scene.soir:
+  icon: mdi:lightbulb-on
+scene.nuit:
+  icon: mdi:weather-night
+scene.film:
+  icon: mdi:movie
+light.gateway_light_7811dcb7e440:
+  friendly_name: Lumière escalier
+script.1519237132719:
+  icon: mdi:fish
+sensor.illumination_7811dcb7e440:
+  friendly_name: Luminosité salon
+sensor.ethereum:
+  icon: mdi:ethereum
+group.meteo:
+  friendly_name: Météo
+  icon: mdi:weather-sunny
+sensor.yw_day1_condition:
+  friendly_name: Demain
+sensor.yw_day2_condition:
+  friendly_name: Après demain
+sensor.yw_day3_condition:
+  friendly_name: 3 jours
+sensor.yw_day1_temperature_max:
+  friendly_name: Max
+sensor.yw_day1_temperature_min:
+  friendly_name: Min
+sensor.yw_day2_temperature_max:
+  friendly_name: Max
+sensor.yw_day2_temperature_min:
+  friendly_name: Min
+sensor.yw_day3_temperature_max:
+  friendly_name: Max
+sensor.yw_day3_temperature_min:
+  friendly_name: Min
+switch.lampe7:
+  friendly_name: Ventilateur salle de bains
+  icon: mdi:fan
+group.sdb:
+  friendly_name: Salle de bain
+sensor.temperature_158d0001f51ff7:
+  friendly_name: Température salon
+switch.bose_aux:
+  friendly_name: Aux
+  icon: mdi:television
+switch.bose_bluetooth:
+  friendly_name: Bluetooth
+  icon: mdi:bluetooth
+switch.bose_power:
+  friendly_name: Power
+  icon: mdi:power
+sensor.08200a00572d3a0649_sensor_status:
+  friendly_name: Detecteur de fumée
+binary_sensor.switch_158d000213599d:
+  hidden: true
+binary_sensor.switch_158d0001e5ca75:
+  hidden: true
+switch.lampe6:
+  friendly_name: Guirlande chambre
+  icon: mdi:lightbulb
+binary_sensor.sonnette:
+  friendly_name: Sonnette
+sensor.decteur_co_sensor_status:
+  friendly_name: Détecteur de CO
+  icon: mdi:smoke-detector
+sensor.mitemp_bt_humidity:
+  device_class: humidity
+  friendly_name: Humidité chambre
+sensor.mitemp_bt_temperature:
+  friendly_name: Température chambre
+sensor.mitemp_bt_battery:
+  friendly_name: Batterie capteur chambre
+  icon: mdi:battery
+binary_sensor.door_window_sensor_158d0001e444dd:
+  device_class: door
+binary_sensor.door_window_sensor_158d00022da897:
+  device_class: window
+binary_sensor.door_window_sensor_158d000232b1c3:
+  device_class: window
+media_player.salon:
+  friendly_name: Chromecast salon
+group.lumiere_salle_a_manger:
+  friendly_name: Salle à manger
+  icon: mdi:food
+switch.tv:
+  icon: mdi:television

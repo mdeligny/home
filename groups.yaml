@@ -1,0 +1,200 @@
+#################################################################################
+#                               LIGHTS                                          #
+#################################################################################
+
+# Living room
+lumiere_salon:
+  name: lumiere_salon
+  view: no
+  icon: mdi:sofa
+  entities:
+    - switch.table
+    - switch.salon
+    - switch.canape
+
+# Chambre
+lumiere_chambre:
+  name: lumiere_chambre
+  view: no
+  icon: mdi:bed
+  entities:
+    - switch.led_cuisine
+    - switch.lampe6
+
+# Salle à manger
+lumiere_salle_a_manger:
+  name: lumiere_salle_a_manger
+  view: no
+  icon: mdi:fork
+  entities:
+    - light.gateway_light_7811dcb7e440
+    - switch.guirlande
+
+# Cuisine
+#lumiere_cuisine:
+#  name: lumiere_cuisine
+#  view: no
+#  icon: mdi:fridge
+#  entities:
+#    - switch.led_cuisine
+
+#################################################################################
+#                               MEDIA                                           #
+#################################################################################
+
+# Tv
+tele:
+  name: tele
+  view: no
+  icon: mdi:television
+  entities:
+    - media_player.salon
+    - switch.tv
+    - script.1516560084710
+    - script.1516560429398
+    - script.1516562409619
+    - script.1516561192028
+
+bose:
+  name: Bose
+  view: no
+  icon: mdi:speaker
+  entities:
+    - switch.bose_power
+    - switch.bose_aux
+    - switch.bose_bluetooth
+
+
+#################################################################################
+#                          FLOWER POWER                                         #
+#################################################################################
+
+ficus:
+  name: ficus
+  view: no
+  icon: mdi:flower
+  entities:
+    - sensor.ficus_battery_level
+    - sensor.ficus_fertilizer_sensor
+    - sensor.ficus_humidity_sensor
+    - sensor.ficus_watering_sensor
+    - sensor.ficus_temperature_sensor
+    - sensor.ficus_light_sensor
+
+#################################################################################
+#                          SENSORS                                              #
+#################################################################################
+
+sensors_sdb:
+  name: Salle de bains
+  view: no
+  entities:
+    - sensor.humidity_158d00022ecfef
+    - sensor.temperature_158d00022ecfef
+
+sensors_salon:
+  name: Salon
+  view: no
+  entities:
+    - sensor.temperature_158d0001f51ff7
+    - sensor.pressure_158d0001f51ff7
+    - sensor.humidity_158d0001f51ff7
+    - sensor.illumination_7811dcb7e440
+
+sensors_chambre:
+  name: Chambre
+  view: no
+  entities:
+    - sensor.mitemp_bt_humidity
+    - sensor.mitemp_bt_temperature
+    - sensor.mitemp_bt_battery
+
+
+#################################################################################
+#                          METEO                                         #
+#################################################################################
+
+meteo:
+  name: meteo
+  view: no
+  icon: mdi:sun
+  entities:
+    - sensor.yw_day1_condition
+    - sensor.yw_day1_temperature_min
+    - sensor.yw_day1_temperature_max
+    - sensor.yw_day2_condition
+    - sensor.yw_day2_temperature_min
+    - sensor.yw_day2_temperature_max
+    - sensor.yw_day3_condition
+    - sensor.yw_day3_temperature_min
+    - sensor.yw_day3_temperature_max
+
+
+#################################################################################
+#                               SCRIPTS                                         #
+#################################################################################
+
+# Scénarios
+scenarios:
+  name: scenarios
+  view: no
+  entities:
+    - script.1515942871785
+    - script.1518951300107
+    - script.1519237132719
+
+#################################################################################
+#                          SECURITE                                             #
+#################################################################################
+
+security:
+  name: Sécurité
+  view: no
+  entities:
+    - binary_sensor.door_window_sensor_158d000232b1c3
+    - binary_sensor.door_window_sensor_158d00022da897
+    - binary_sensor.door_window_sensor_158d0001e444dd
+    - sensor.decteur_co_sensor_status
+
+#################################################################################
+#                               VIEWS                                           #
+#################################################################################
+
+# Salon
+salon:
+  name: salon
+  view: yes
+  entities:
+    - group.lumiere_salon
+    - group.tele
+    - group.bose
+    - media_player.salon_2
+    - group.flower_power
+    - sensor.temperature_158d0001f51ff7
+    - sensor.pressure_158d0001f51ff7
+    - sensor.humidity_158d0001f51ff7
+    - sensor.illumination_7811dcb7e440
+
+# Cuisine
+#cuisine:
+#  name: cuisine
+#  view: yes
+#  entities:
+#    - group.lumiere_cuisine
+
+# Chambre
+chambre:
+  name: chambre
+  view: yes
+  entities:
+    - group.lumiere_chambre
+    - sensor.mitemp_bt_humidity
+    - sensor.mitemp_bt_temperature
+
+# SDB
+sdb:
+  name: Salle de bains
+  view: yes
+  entities:
+    - sensor.humidity_158d00022ecfef
+    - sensor.temperature_158d00022ecfef

@@ -1,0 +1,59 @@
+# Weather
+- platform: waqi
+  token: !secret waqi_api_key
+  locations:
+    - lille
+  stations:
+    - Lille Fives, Nord-Pas-de-Calais, France
+- platform: yweather
+  monitored_conditions:
+    #- weather_current
+    #- temp_min
+    #- temp_max
+    #- wind_speed
+    - humidity
+    - temperature
+- platform: yweather
+  forecast: 1
+  name: yw_day1
+  monitored_conditions:
+    - weather
+    - temp_min
+    - temp_max
+- platform: yweather
+  forecast: 2
+  name: yw_day2
+  monitored_conditions:
+    - weather
+    - temp_min
+    - temp_max
+- platform: yweather
+  forecast: 3
+  name: yw_day3
+  monitored_conditions:
+    - weather
+    - temp_min
+    - temp_max
+- platform: mitemp_bt
+  mac: '4C:65:A8:D0:D3:36'
+  median: 3
+
+- platform: rfxtrx
+  automatic_add: False
+  devices:
+    08200a000000000639:
+      name: decteur_co
+      fire_event: True
+
+# Finance
+- platform: coinmarketcap
+  currency: Ethereum
+  display_currency: EUR
+
+
+# Flower power
+- platform: flower_power
+  username: rojowstyle@gmail.com
+  password: !secret flower_power_pwd
+  clientid: rojowstyle@gmail.com
+  clientsecret: !secret flower_power_token
