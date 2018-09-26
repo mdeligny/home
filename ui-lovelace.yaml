@@ -193,11 +193,13 @@ views:
       - type: history-graph
         title: Température
         entities:
-          - sensor.temperature_158d0001f51ff7
+          - entity: sensor.temperature_158d0001f51ff7
+            name: Température salon
       - type: history-graph
         title: Humidité
         entities:
-          - sensor.humidity_158d0001f51ff7
+          - entity: sensor.humidity_158d0001f51ff7
+            name: Humidité salon
 
 #################
 
@@ -238,4 +240,5 @@ views:
       - type: history-graph
         title: Température
         entities:
-          - sensor.temperature_158d00022ecfef
+          - entity: sensor.temperature_158d00022ecfef
+            name: Température salle de bains
