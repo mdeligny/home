@@ -134,6 +134,19 @@ xiaomi_aqara:
     - key: !secret xiaomi_aqara_key
       mac: 78:11:DC:B7:E4:40
 
+
+fan:
+  - platform: template
+    fans:
+      ventilateur_salle_de_bains:
+        friendly_name: "Ventilateur salle de bains"
+        value_template: "{{ states('switch.lampe7.state') }}"
+        turn_on:
+          service: script.1538133008927
+        turn_off:
+          service: script.1538133067280
+
+
 #################################################################################
 #                                   INCLUDES                                    #
 #################################################################################
