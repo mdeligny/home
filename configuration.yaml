@@ -17,6 +17,9 @@ frontend:
 # Enables configuration UI
 config:
 
+recorder:
+  db_url: !secret db_access
+
 http:
   base_url: maoutin.duckdns.org
   ssl_certificate: /ssl/fullchain.pem
@@ -74,8 +77,7 @@ panel_iframe:
 # Log of events
 logger:
   logs:
-    homeassistant.components: info
-    homeassistant.components.rfxtrx: debug
+    homeassistant.components: error
 
 # Enables a map showing the location of tracked devices
 map:
@@ -120,8 +122,10 @@ rfxtrx:
 device_tracker:
   - platform: nmap_tracker
     hosts: 192.168.1.0/24
-    track_new_devices: no
+    track_new_devices: yes
     interval_seconds: 20
+    exclude:
+      - 192.168.1.30
 #  - platform: bluetooth_tracker
 
 xiaomi_aqara:
@@ -129,6 +133,19 @@ xiaomi_aqara:
   gateways:
     - key: !secret xiaomi_aqara_key
       mac: 78:11:DC:B7:E4:40
+
+
+fan:
+  - platform: template
+    fans:
+      ventilateur_salle_de_bains:
+        friendly_name: "Ventilateur salle de bains"
+        value_template: "{{ states('switch.lampe7.state') }}"
+        turn_on:
+          service: script.1538133008927
+        turn_off:
+          service: script.1538133067280
+
 
 #################################################################################
 #                                   INCLUDES                                    #

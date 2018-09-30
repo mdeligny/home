@@ -140,3 +140,15 @@
   - data:
       entity_id: script.1516561192028
     service: script.turn_on
+'1538133008927':
+  alias: Ventilo On
+  sequence:
+  - data:
+      entity_id: switch.lampe7
+    service: switch.turn_on
+'1538133067280':
+  alias: Ventilo Off
+  sequence:
+  - data:
+      entity_id: switch.lampe7
+    service: switch.turn_off
