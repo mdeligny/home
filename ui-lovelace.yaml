@@ -236,7 +236,7 @@ views:
         show_header_toggle: false
         title: Ventilo
         entities:
-          - switch.lampe7
+          - fan.ventilateur_salle_de_bains
       - type: history-graph
         title: Température
         entities:

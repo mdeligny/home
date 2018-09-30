@@ -74,8 +74,8 @@
   condition: []
   action:
   - data:
-      entity_id: switch.lampe7
-    service: switch.turn_off
+      entity_id: fan.ventilateur_salle_de_bains
+    service: fan.turn_off
 - action:
   - data:
       message: L'humidité de la salle de bains a dépassé les 60%
@@ -199,8 +199,8 @@
     state: 'on'
   action:
   - data:
-      entity_id: switch.lampe7
-    service: switch.turn_on
+      entity_id: fan.ventilateur_salle_de_bains
+    service: fan.turn_on
 - id: '1537866148424'
   alias: Switch chambre guirlande
   trigger:
