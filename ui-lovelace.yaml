@@ -104,6 +104,7 @@ views:
 
 
   - title: salon
+    icon: mdi:sofa
     id: salon
     cards:
       - type: glance
@@ -173,6 +174,7 @@ views:
 
   - title: chambre
     id: chambre
+    icon: mdi:sleep
     cards:
       - type: glance
         column_width: calc(100% / 2)
@@ -199,6 +201,7 @@ views:
 
   - title: Salle de bain
     id: salle_de_bains
+    icon: mdi:shower
     cards:
       - type: glance
         column_width: calc(100% / 3)
