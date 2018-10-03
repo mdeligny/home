@@ -155,6 +155,30 @@ security:
     - binary_sensor.door_window_sensor_158d00022da897
     - binary_sensor.door_window_sensor_158d0001e444dd
     - sensor.decteur_co_sensor_status
+    
+#################################################################################
+#                          FENETRES                                             #
+#################################################################################
+
+fenetres:
+  name: Fenêtres
+  view: no
+  entities:
+    - binary_sensor.door_window_sensor_158d000232b1c3
+    - binary_sensor.door_window_sensor_158d00022da897
+    - binary_sensor.door_window_sensor_158d0001e444dd
+    
+#################################################################################
+#                          INNONDATION                                          #
+#################################################################################
+
+innondation:
+  name: Innondation
+  view: no
+  entities:
+    - binary_sensor.water_leak_sensor_158d000270525d
+    - binary_sensor.water_leak_sensor_158d0002705267
+    - binary_sensor.water_leak_sensor_158d000270522b
 
 #################################################################################
 #                               VIEWS                                           #

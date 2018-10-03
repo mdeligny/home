@@ -195,3 +195,7 @@ group.lumiere_salle_a_manger:
   icon: mdi:food
 switch.tv:
   icon: mdi:television
+group.fenetres:
+  icon: mdi:window-closed
+group.innondation:
+  icon: mdi:water

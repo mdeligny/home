@@ -70,55 +70,17 @@ views:
           - sensor.yweather_temperature
           - sun.sun
           - sensor.waqi_lille_fives_nordpasdecalais_france
-#      - type: entities
-#        title: "Scénarios"
-#        show_header_toggle: true
-#        entities:
-#          - script.1515942871785
-#          - script.1518951300107
-#          - script.1519237132719
       - type: glance
         title: "Sécurité"
         show_header_toggle: false
-        column_width: calc(100% / 4)
+        column_width: calc(100% / 3)
         entities:
-          - entity: binary_sensor.door_window_sensor_158d00022da897
-            name: Gauche
-          - entity: binary_sensor.door_window_sensor_158d000232b1c3
-            name: Droite
-          - entity: binary_sensor.door_window_sensor_158d0001e444dd
-            name: Entrée
+          - entity: group.fenetres
+            name: Ouvertures
+          - entity: group.innondation
+            name: Innondation
           - entity: sensor.decteur_co_sensor_status
             name: CO
-#      - type: entities
-#        title: all scripts
-#        show_header_toggle: true
-#        entities:
-#          - script.1519237132719
-#          - script.1515942871785
-#          - script.1518951300107
-#          - script.1516562409619
-#          - script.1516561192028
-#          - script.1516560084710
-#          - script.1516560429398
-#      - type: entities
-#        title: Automatisations
-#        show_header_toggle: true
-#        entities:
-#          - automation.alerte_pour_la_batterie_du_pot
-#          - automation.alerte_quand_porte_ouverte_si_absent
-#          - automation.alerte_sur_le_niveau_deau_du_pot_parrot
-#          - automation.allumer_les_lumieres_quand_le_soleil_se_couche
-#          - automation.allumer_quand_present
-#          - automation.eteindre_la_chromecast_quand_on_eteint_la_tele
-#          - automation.eteindre_quand_assez_lumineux
-#          - automation.notif_quand_humidite_sdb_normale
-#          - automation.notif_quand_sdb_trop_humide
-#          - automation.notify_when_new_version_is_available
-#          - automation.switch_chambre_lampadaire
-#          - automation.switch_dble_click_sam_toggle
-#          - automation.switch_simple_click_salon_off
-#          - automation.switch_simple_click_salon_on
       - type: entity-filter
         entities:
           - entity: device_tracker.androidf08fbf0c26decf7ehome
@@ -132,28 +94,14 @@ views:
           column_width: calc(100% / 3)
           show_state: false
           title: Présence
-#      - type: entities
-#        title: Tous les boutons
-#        show_header_toggle: true
-#        entities:
-#          - switch.tv
-#          - switch.canape
-#          - switch.guirlande
-#          - switch.lampe6
-#          - switch.lampe7
-#          - switch.led_cuisine
-#          - switch.salon
-#          - switch.table
-#      - type: entities
-#        title: Lampes
-#        show_header_toggle: true
-#        entities:
-#          - light.gateway_light_7811dcb7e440
-#      - type: media-control
-#        entity: media_player.salon_2
+
+################################
+#
+#       LIVING ROOM
+#
+################################
 
 
-#####################
   - title: salon
     id: salon
     cards:
@@ -175,6 +123,13 @@ views:
           - switch.canape
         image: /local/2018-09-15 09.21.51.jpg
       - type: picture-glance
+        title: "Salle à manger"
+        navigation_path: /lovelace/salon
+        entities:
+          - light.gateway_light_7811dcb7e440
+          - switch.guirlande
+        image: /local/2018-09-14 21.38.16.jpg
+      - type: picture-glance
         title: TV
         entities:
           - switch.tv
@@ -186,6 +141,14 @@ views:
           "on": /local/2018-09-15 10.37.30.jpg
           "off": /local/2018-09-15 10.35.01.jpg
         entity: switch.tv
+      - type: glance
+        title: Porte fenêtre
+        column_width: calc(100% / 2)
+        entities:
+          - entity: binary_sensor.door_window_sensor_158d00022da897
+            name: Gauche
+          - entity: binary_sensor.door_window_sensor_158d000232b1c3
+            name: Droite
       - type: media-control
         entity: media_player.salon
       - type: media-control
@@ -201,7 +164,11 @@ views:
           - entity: sensor.humidity_158d0001f51ff7
             name: Humidité salon
 
-#################
+################################
+#
+#       BEDROOM
+#
+################################
 
   - title: chambre
     id: chambre
@@ -223,15 +190,24 @@ views:
         entities:
           - sensor.mitemp_bt_temperature
 
-###########
+################################
+#
+#       BATHROOM
+#
+################################
+
   - title: Salle de bain
     id: salle_de_bains
     cards:
       - type: glance
-        column_width: calc(100% / 2)
+        column_width: calc(100% / 3)
         entities:
-          - sensor.humidity_158d00022ecfef
-          - sensor.temperature_158d00022ecfef
+          - entity: sensor.humidity_158d00022ecfef
+            name: Humidité
+          - entity: sensor.temperature_158d00022ecfef
+            name: Température
+          - entity: binary_sensor.water_leak_sensor_158d0002705267
+            name: Sol placard
       - type: entities
         show_header_toggle: false
         title: Ventilo
@@ -242,3 +218,45 @@ views:
         entities:
           - entity: sensor.temperature_158d00022ecfef
             name: Température salle de bains
+
+################################
+#
+#       SECURITY
+#
+################################
+
+
+  - title: Sécurité
+    id: securite
+    icon: mdi:shield
+    cards:
+      - type: glance
+        title: Entrée
+        column_width: calc(100% / 2)
+        entities:
+          - entity: binary_sensor.door_window_sensor_158d0001e444dd
+            name: Porte
+          - entity: binary_sensor.water_leak_sensor_158d000270522b
+            name: WC
+      - type: glance
+        title: Cuisine
+        column_width: calc(100% / 2)
+        entities: 
+          - entity: sensor.decteur_co_sensor_status
+            name: CO
+          - entity: binary_sensor.water_leak_sensor_158d000270525d
+            name: Machine à laver
+      - type: glance
+        title: Salon
+        column_width: calc(100% / 2)
+        entities:
+          - entity: binary_sensor.door_window_sensor_158d00022da897
+            name: Gauche
+          - entity: binary_sensor.door_window_sensor_158d000232b1c3
+            name: Droite
+      - type: glance
+        title: Salle de bains
+        column_width: calc(100% / 2)
+        entities: 
+          - entity: binary_sensor.water_leak_sensor_158d0002705267
+            name: Sol placard
