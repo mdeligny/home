@@ -7,6 +7,7 @@ title: Home
 views:
   - title: Home
     id: home
+    icon: mdi:home
     cards:
       - type: picture-glance
         title: Salon
@@ -241,7 +242,7 @@ views:
       - type: glance
         title: Cuisine
         column_width: calc(100% / 2)
-        entities: 
+        entities:
           - entity: sensor.decteur_co_sensor_status
             name: CO
           - entity: binary_sensor.water_leak_sensor_158d000270525d
@@ -257,6 +258,6 @@ views:
       - type: glance
         title: Salle de bains
         column_width: calc(100% / 2)
-        entities: 
+        entities:
           - entity: binary_sensor.water_leak_sensor_158d0002705267
             name: Sol placard
