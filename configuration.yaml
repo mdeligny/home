@@ -97,6 +97,8 @@ tts:
 # Cloud
 cloud:
 
+weather:
+  - platform: yweather
 
 #################################################################################
 #                       DEVICES AND INTEGRATIONS                                #

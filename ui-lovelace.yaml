@@ -240,14 +240,14 @@ views:
         entities:
           - entity: binary_sensor.door_window_sensor_158d0001e444dd
             name: Porte
+          - entity: binary_sensor.water_leak_sensor_158d000270525d
+            name: WC
       - type: glance
         title: Cuisine
-        column_width: calc(100% / 3)
+        column_width: calc(100% / 2)
         entities:
           - entity: sensor.decteur_co_sensor_status
             name: CO
-          - entity: binary_sensor.water_leak_sensor_158d000270525d
-            name: Machine à laver
           - entity: binary_sensor.water_leak_sensor_158d000270522b
             name: Evier
       - type: glance
