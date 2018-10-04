@@ -61,14 +61,14 @@ views:
           - sensor.mitemp_bt_humidity
           - sensor.mitemp_bt_temperature
           - sensor.mitemp_bt_battery
+      - type: weather-forecast
+        entity: weather.yweather
       - type: glance
         title: Météo
         show_header_toggle: false
         show_name: false
         column_width: calc(100% / 4)
         entities:
-          - sensor.yweather_humidity
-          - sensor.yweather_temperature
           - sun.sun
           - sensor.waqi_lille_fives_nordpasdecalais_france
       - type: glance

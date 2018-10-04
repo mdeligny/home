@@ -199,3 +199,5 @@ group.fenetres:
   icon: mdi:window-closed
 group.innondation:
   icon: mdi:water
+weather.yweather:
+  friendly_name: Météo Lille
