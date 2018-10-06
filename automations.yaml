@@ -65,17 +65,6 @@
   - data:
       entity_id: switch.guirlande
     service: switch.turn_on
-- id: '1518719165117'
-  alias: 'Eteindre chauffage SDB '
-  trigger:
-  - above: '22'
-    entity_id: sensor.temperature_158d00022ecfef
-    platform: numeric_state
-  condition: []
-  action:
-  - data:
-      entity_id: fan.ventilateur_salle_de_bains
-    service: fan.turn_off
 - action:
   - data:
       message: L'humidité de la salle de bains a dépassé les 60%
@@ -185,22 +174,6 @@
   - data:
       entity_id: scene.salon_off
     service: scene.turn_on
-- id: '1537815697539'
-  alias: Test ventilo
-  trigger:
-  - at: 07:00:00
-    platform: time
-  condition:
-  - below: '22'
-    condition: numeric_state
-    entity_id: sensor.temperature_158d00022ecfef
-  - condition: state
-    entity_id: binary_sensor.workday_sensor
-    state: 'on'
-  action:
-  - data:
-      entity_id: fan.ventilateur_salle_de_bains
-    service: fan.turn_on
 - id: '1537866148424'
   alias: Switch chambre guirlande
   trigger:

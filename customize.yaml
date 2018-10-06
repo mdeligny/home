@@ -145,8 +145,8 @@ sensor.yw_day3_temperature_max:
 sensor.yw_day3_temperature_min:
   friendly_name: Min
 switch.lampe7:
-  friendly_name: Ventilateur salle de bains
-  icon: mdi:fan
+  friendly_name: LED dressing Martin
+  icon: mdi:led-strip
 group.sdb:
   friendly_name: Salle de bain
 sensor.temperature_158d0001f51ff7:

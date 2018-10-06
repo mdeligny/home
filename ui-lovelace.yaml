@@ -187,6 +187,7 @@ views:
         entities:
           - switch.led_cuisine
           - switch.lampe6
+          - switch.lampe7
         image: /local/2018-09-14 21.36.23.jpg
       - type: history-graph
         title: Température
@@ -212,11 +213,6 @@ views:
             name: Température
           - entity: binary_sensor.water_leak_sensor_158d0002705267
             name: Sol placard
-      - type: entities
-        show_header_toggle: false
-        title: Ventilo
-        entities:
-          - fan.ventilateur_salle_de_bains
       - type: history-graph
         title: Température
         entities:
