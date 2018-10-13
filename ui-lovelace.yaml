@@ -165,6 +165,16 @@ views:
         entities:
           - entity: sensor.humidity_158d0001f51ff7
             name: Humidité salon
+      - type: sensor
+        entity: sensor.humidity_158d0001f51ff7
+        name: Humidité salon
+        height: 100
+        line_color: "#3498db"
+      - type: sensor
+        entity: sensor.temperature_158d0001f51ff7
+        name: Température salon
+        height: 100
+        line_color: "#3498db"
 
 ################################
 #
@@ -214,18 +224,20 @@ views:
         entities:
           - entity: binary_sensor.water_leak_sensor_158d0002705267
             name: Sol placard
-      - type: gauge
-        entity: sensor.humidity_158d00022ecfef
-        title: Humidité
-        unit_of_measurement: '%'
-        min: 0
-        max: 100
-      - type: gauge
-        entity: sensor.temperature_158d00022ecfef
-        title: Température
-        unit_of_measurement: '°C'
-        min: 15
-        max: 30
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            entity: sensor.humidity_158d00022ecfef
+            title: Humidité
+            unit_of_measurement: '%'
+            min: 0
+            max: 100
+          - type: gauge
+            entity: sensor.temperature_158d00022ecfef
+            title: Température
+            unit_of_measurement: '°C'
+            min: 15
+            max: 30
       - type: sensor
         entity: sensor.temperature_158d00022ecfef
         name: Température
