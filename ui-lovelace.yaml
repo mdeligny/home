@@ -155,24 +155,14 @@ views:
         entity: media_player.salon
       - type: media-control
         entity: media_player.salon_2
-      - type: history-graph
-        title: Température
-        entities:
-          - entity: sensor.temperature_158d0001f51ff7
-            name: Température salon
-      - type: history-graph
-        title: Humidité
-        entities:
-          - entity: sensor.humidity_158d0001f51ff7
-            name: Humidité salon
       - type: sensor
         entity: sensor.humidity_158d0001f51ff7
-        name: Humidité salon
+        name: Humidité
         height: 100
         line_color: "#3498db"
       - type: sensor
         entity: sensor.temperature_158d0001f51ff7
-        name: Température salon
+        name: Température
         height: 100
         line_color: "#3498db"
 
@@ -199,10 +189,6 @@ views:
           - switch.lampe6
           - switch.lampe7
         image: /local/2018-09-14 21.36.23.jpg
-      - type: history-graph
-        title: Température
-        entities:
-          - sensor.mitemp_bt_temperature
       - type: sensor
         entity: sensor.mitemp_bt_temperature
         name: Température
