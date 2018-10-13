@@ -193,6 +193,11 @@ views:
         title: Température
         entities:
           - sensor.mitemp_bt_temperature
+      - type: sensor
+        entity: sensor.mitemp_bt_temperature
+        name: Température
+        height: 100
+        line_color: "#3498db"
 
 ################################
 #
@@ -218,13 +223,13 @@ views:
       - type: gauge
         entity: sensor.temperature_158d00022ecfef
         title: Température
-        unit_of_measurement: '°'
-        min: 0
-        max: 40
+        unit_of_measurement: '°C'
+        min: 15
+        max: 30
       - type: sensor
         entity: sensor.temperature_158d00022ecfef
         name: Température
-        height: 75
+        height: 100
         line_color: "#3498db"
 
 ################################
