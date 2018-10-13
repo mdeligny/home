@@ -204,26 +204,23 @@ views:
     id: salle_de_bains
     icon: mdi:shower
     cards:
-      - type: horizontal-stack
-        cards:
-          - type: glance
-            column_width: calc(100%)
-            entities:
-              - entity: binary_sensor.water_leak_sensor_158d0002705267
-                name: Sol placard
-          - type: gauge
-            entity: sensor.humidity_158d00022ecfef
-            title: Humidité
-            unit_of_measurement: '%'
-            min: 0
-            max: 100
-          - type: gauge
-            entity: sensor.temperature_158d00022ecfef
-            title: Température
-            unit_of_measurement: '°'
-            min: 0
-            max: 40
-
+      - type: glance
+        column_width: calc(100%)
+        entities:
+          - entity: binary_sensor.water_leak_sensor_158d0002705267
+            name: Sol placard
+      - type: gauge
+        entity: sensor.humidity_158d00022ecfef
+        title: Humidité
+        unit_of_measurement: '%'
+        min: 0
+        max: 100
+      - type: gauge
+        entity: sensor.temperature_158d00022ecfef
+        title: Température
+        unit_of_measurement: '°'
+        min: 0
+        max: 40
       - type: sensor
         entity: sensor.temperature_158d00022ecfef
         name: Température
