@@ -33,6 +33,7 @@ views:
         entities:
           - switch.led_cuisine
           - switch.lampe6
+          - switch.lampe7
         image: /local/2018-09-14 21.36.23.jpg
       - type: glance
         title: Salle de bains
@@ -63,14 +64,6 @@ views:
           - sensor.mitemp_bt_battery
       - type: weather-forecast
         entity: weather.yweather
-      - type: glance
-        title: Météo
-        show_header_toggle: false
-        show_name: false
-        column_width: calc(100% / 4)
-        entities:
-          - sun.sun
-          - sensor.waqi_lille_fives_nordpasdecalais_france
       - type: glance
         title: "Sécurité"
         show_header_toggle: false
