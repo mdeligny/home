@@ -176,11 +176,6 @@ views:
     id: chambre
     icon: mdi:sleep
     cards:
-      - type: glance
-        column_width: calc(100% / 2)
-        entities:
-          - sensor.mitemp_bt_humidity
-          - sensor.mitemp_bt_temperature
       - type: picture-glance
         title: Chambre
         show_header_toggle: false
@@ -192,6 +187,11 @@ views:
       - type: sensor
         entity: sensor.mitemp_bt_temperature
         name: Température
+        height: 100
+        line_color: "#3498db"
+      - type: sensor
+        entity: sensor.mitemp_bt_humidity
+        name: Humidité
         height: 100
         line_color: "#3498db"
 
