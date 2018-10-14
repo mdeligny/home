@@ -177,16 +177,18 @@ views:
           - switch.lampe6
           - switch.lampe7
         image: /local/2018-09-14 21.36.23.jpg
-      - type: sensor
-        entity: sensor.mitemp_bt_temperature
-        name: Température
-        height: 100
-        line_color: "#3498db"
-      - type: sensor
-        entity: sensor.mitemp_bt_humidity
-        name: Humidité
-        height: 100
-        line_color: "#3498db"
+      - type: vertical-stack
+        cards:
+          - type: sensor
+            entity: sensor.mitemp_bt_temperature
+            name: Température
+            height: 100
+            line_color: "#3498db"
+          - type: sensor
+            entity: sensor.mitemp_bt_humidity
+            name: Humidité
+            height: 100
+            line_color: "#3498db"
 
 ################################
 #
