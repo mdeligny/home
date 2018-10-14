@@ -203,7 +203,7 @@ views:
         entities:
           - entity: binary_sensor.water_leak_sensor_158d0002705267
             name: Sol placard
-      - type: horizontal-stack
+      - type: vertical-stack
         cards:
           - type: gauge
             entity: sensor.humidity_158d00022ecfef
