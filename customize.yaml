@@ -201,3 +201,5 @@ group.innondation:
   icon: mdi:water
 weather.yweather:
   friendly_name: Météo Lille
+binary_sensor.door_window_sensor_158d000249045b:
+  friendly_name: Dressing
