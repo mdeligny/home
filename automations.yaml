@@ -200,7 +200,8 @@
   - data:
       entity_id: scene.salon_off
     service: scene.turn_on
-- alias: Dressing ouvert
+- id: 'dressingouvert123456789'
+  alias: Dressing ouvert
   trigger:
   - entity_id: binary_sensor.door_window_sensor_158d000249045b
     from: 'off'
@@ -210,7 +211,8 @@
   - data:
       entity_id: switch.lampe7
     service: switch.turn_on
-- alias: Dressing fermé
+- id: 'dressingferme123456789'
+  alias: Dressing fermé
   trigger:
   - entity_id: binary_sensor.door_window_sensor_158d000249045b
     from: 'on'
