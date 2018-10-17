@@ -266,3 +266,11 @@ views:
         entities:
           - entity: binary_sensor.water_leak_sensor_158d0002705267
             name: Sol placard
+      - type: entities
+        title: Simulation présence
+        entities:
+          - automation.simulation_presence_matin_on
+          - automation.simulation_presence_matin_off
+          - automation.simulation_presence_soiree_on
+          - automation.simulation_presence_soir_on
+          - automation.simulation_presence_soir_off
