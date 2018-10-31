@@ -33,7 +33,7 @@ views:
         entities:
           - switch.led_cuisine
           - switch.lampe6
-          - switch.lampe7
+          - switch.zapo3133
         image: /local/2018-09-14 21.36.23.jpg
       - type: glance
         title: Salle de bains
@@ -175,7 +175,7 @@ views:
         entities:
           - switch.led_cuisine
           - switch.lampe6
-          - switch.lampe7
+          - switch.zapo3133
         image: /local/2018-09-14 21.36.23.jpg
       - type: vertical-stack
         cards:
