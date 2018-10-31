@@ -119,7 +119,7 @@
       entity_id: switch.guirlande
     service: switch.toggle
 - id: '1526112422646'
-  alias: Switch Chambre Lampadaire
+  alias: Switch ventilateur SDB
   trigger:
   - event_data:
       click_type: single
@@ -129,7 +129,7 @@
   condition: []
   action:
   - data:
-      entity_id: switch.zapo3131
+      entity_id: switch.lampe6
     service: switch.toggle
 - id: '1534707315306'
   alias: Eteindre quand assez lumineux
