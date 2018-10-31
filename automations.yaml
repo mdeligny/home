@@ -225,62 +225,62 @@
   - data:
       entity_id: switch.zapo3133
     service: switch.turn_off
-- id: '1539759308952'
-  alias: Simulation présence matin ON
-  trigger:
-  - at: 07:00:00
-    platform: time
-  condition:
-  - condition: state
-    entity_id: binary_sensor.workday_sensor
-    state: 'on'
-  action:
-  - data:
-      entity_id: scene.salon_on
-    service: scene.turn_on
-- id: '1539759365006'
-  alias: Simulation présence matin OFF
-  trigger:
-  - at: 08:15:00
-    platform: time
-  condition: []
-  action:
-  - data:
-      entity_id: scene.salon_off
-    service: scene.turn_on
-- id: '1539759440417'
-  alias: Simulation présence soirée ON
-  trigger:
-  - event: sunset
-    platform: sun
-  condition: []
-  action:
-  - data:
-      entity_id: scene.salon_on
-    service: scene.turn_on
-- id: '1539759578790'
-  alias: Simulation présence soir ON
-  trigger:
-  - at: '21:30'
-    platform: time
-  condition: []
-  action:
-  - data:
-      entity_id: switch.zapo3131
-    service: switch.turn_on
-- id: '1539759631228'
-  alias: Simulation présence soir OFF
-  trigger:
-  - at: '23:30'
-    platform: time
-  condition: []
-  action:
-  - data:
-      entity_id: switch.zapo3131
-    service: switch.turn_off
-  - data:
-      entity_id: scene.salon_off
-    service: scene.turn_on
+#- id: '1539759308952'
+#  alias: Simulation présence matin ON
+#  trigger:
+#  - at: 07:00:00
+#    platform: time
+#  condition:
+#  - condition: state
+#    entity_id: binary_sensor.workday_sensor
+#    state: 'on'
+#  action:
+#  - data:
+#      entity_id: scene.salon_on
+#    service: scene.turn_on
+#- id: '1539759365006'
+#  alias: Simulation présence matin OFF
+#  trigger:
+#  - at: 08:15:00
+#    platform: time
+#  condition: []
+#  action:
+#  - data:
+#      entity_id: scene.salon_off
+#    service: scene.turn_on
+#- id: '1539759440417'
+#  alias: Simulation présence soirée ON
+#  trigger:
+#  - event: sunset
+#    platform: sun
+#  condition: []
+#  action:
+#  - data:
+#      entity_id: scene.salon_on
+#    service: scene.turn_on
+#- id: '1539759578790'
+#  alias: Simulation présence soir ON
+#  trigger:
+#  - at: '21:30'
+#    platform: time
+#  condition: []
+#  action:
+#  - data:
+#      entity_id: switch.zapo3131
+#    service: switch.turn_on
+#- id: '1539759631228'
+#  alias: Simulation présence soir OFF
+#  trigger:
+#  - at: '23:30'
+#    platform: time
+#  condition: []
+#  action:
+#  - data:
+#      entity_id: switch.zapo3131
+#    service: switch.turn_off
+#  - data:
+#      entity_id: scene.salon_off
+#    service: scene.turn_on
 - id: '1540991000676'
   alias: Dressing Marion ouvert
   trigger:
