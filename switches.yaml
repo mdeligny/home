@@ -17,6 +17,14 @@
       name: lampe7
     "0710090041050000":
       name: zap1
+    "0710090041060000":
+      name: zap2
+    "0710090041070000":
+      name: zap3
+    "0710090041080000":
+      name: zap4
+    "0710090041090000":
+      name: zap5
 
 #- platform: rest
 #  resource: http://192.168.1.30/bose/power
