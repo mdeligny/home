@@ -209,7 +209,7 @@
     to: 'on'
   action:
   - data:
-      entity_id: switch.lampe7
+      entity_id: switch.zapo3133
     service: switch.turn_on
 - id: dressingferme123456789
   alias: Dressing fermé
@@ -220,7 +220,7 @@
     to: 'off'
   action:
   - data:
-      entity_id: switch.lampe7
+      entity_id: switch.zapo3133
     service: switch.turn_off
 - id: '1539759308952'
   alias: Simulation présence matin ON
