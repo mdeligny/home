@@ -281,7 +281,7 @@
 - id: '1540991000676'
   alias: Dressing Marion ouvert
   trigger:
-  - entity_id: binary_sensor.door_window_sensor_158d000249045b
+  - entity_id: binary_sensor.door_window_sensor_158d00023295f0
     from: 'off'
     platform: state
     to: 'on'
@@ -293,7 +293,7 @@
 - id: '1540991050127'
   alias: Dressing Marion fermé
   trigger:
-  - entity_id: binary_sensor.door_window_sensor_158d000249045b
+  - entity_id: binary_sensor.door_window_sensor_158d00023295f0
     from: 'on'
     platform: state
     to: 'off'
