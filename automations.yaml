@@ -201,7 +201,7 @@
       entity_id: scene.salon_off
     service: scene.turn_on
 - id: dressingouvert123456789
-  alias: Dressing ouvert
+  alias: Dressing Martin ouvert
   trigger:
   - entity_id: binary_sensor.door_window_sensor_158d000249045b
     from: 'off'
@@ -212,7 +212,7 @@
       entity_id: switch.zapo3133
     service: switch.turn_on
 - id: dressingferme123456789
-  alias: Dressing fermé
+  alias: Dressing Martin fermé
   trigger:
   - entity_id: binary_sensor.door_window_sensor_158d000249045b
     from: 'on'
@@ -278,3 +278,27 @@
   - data:
       entity_id: scene.salon_off
     service: scene.turn_on
+- id: '1540991000676'
+  alias: Dressing Marion ouvert
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d000249045b
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.zapo3134
+    service: switch.turn_on
+- id: '1540991050127'
+  alias: Dressing Marion fermé
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d000249045b
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.zapo3134
+    service: switch.turn_off
