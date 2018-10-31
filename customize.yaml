@@ -43,8 +43,7 @@ group.scenarios:
 group.lumiere_cuisine:
   friendly_name: Cuisine
 switch.led_cuisine:
-  friendly_name: Lampadaire chambre
-  icon: mdi:lamp
+  friendly_name: Switch
 group.salon:
   order: 1
 sensor.yweather_pressure:
@@ -167,8 +166,7 @@ binary_sensor.switch_158d000213599d:
 binary_sensor.switch_158d0001e5ca75:
   hidden: true
 switch.lampe6:
-  friendly_name: Guirlande chambre
-  icon: mdi:lightbulb
+  friendly_name: Switch n
 binary_sensor.sonnette:
   friendly_name: Sonnette
 sensor.decteur_co_sensor_status:
@@ -203,3 +201,11 @@ weather.yweather:
   friendly_name: Météo Lille
 binary_sensor.door_window_sensor_158d000249045b:
   friendly_name: Dressing
+switch.zapo3131:
+  friendly_name: Lampadaire chambre
+switch.zapo3132:
+  friendly_name: Guirlande chambre
+switch.zapo3133:
+  friendly_name: Dressing Martin
+switch.zapo3134:
+  friendly_name: Dressing Marion
