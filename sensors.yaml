@@ -52,8 +52,8 @@
 
 
 # Flower power
-- platform: flower_power
-  username: rojowstyle@gmail.com
-  password: !secret flower_power_pwd
-  clientid: rojowstyle@gmail.com
-  clientsecret: !secret flower_power_token
+#- platform: flower_power
+#  username: rojowstyle@gmail.com
+#  password: !secret flower_power_pwd
+#  clientid: rojowstyle@gmail.com
+#  clientsecret: !secret flower_power_token

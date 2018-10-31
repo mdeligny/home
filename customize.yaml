@@ -143,9 +143,8 @@ sensor.yw_day3_temperature_max:
   friendly_name: Max
 sensor.yw_day3_temperature_min:
   friendly_name: Min
-switch.lampe7:
-  friendly_name: LED dressing Martin
-  icon: mdi:led-strip
+switch.dio3:
+  friendly_name: dio3
 group.sdb:
   friendly_name: Salle de bain
 sensor.temperature_158d0001f51ff7:
@@ -165,8 +164,9 @@ binary_sensor.switch_158d000213599d:
   hidden: true
 binary_sensor.switch_158d0001e5ca75:
   hidden: true
-switch.lampe6:
-  friendly_name: Switch n
+switch.dio2:
+  friendly_name: Ventilateur SDB
+  icon: mdi:fan
 binary_sensor.sonnette:
   friendly_name: Sonnette
 sensor.decteur_co_sensor_status:
@@ -203,9 +203,15 @@ binary_sensor.door_window_sensor_158d000249045b:
   friendly_name: Dressing
 switch.zapo3131:
   friendly_name: Lampadaire chambre
+  icon: mdi:lamp
 switch.zapo3132:
   friendly_name: Guirlande chambre
+  icon: mdi:white-balance-sunny
 switch.zapo3133:
   friendly_name: Dressing Martin
+  icon: mdi:hanger
 switch.zapo3134:
+  friendly_name: Dressing Marion
+  icon: mdi:hanger
+binary_sensor.door_window_sensor_158d00023295f0:
   friendly_name: Dressing Marion

@@ -129,7 +129,7 @@
   condition: []
   action:
   - data:
-      entity_id: switch.lampe6
+      entity_id: switch.dio2
     service: switch.toggle
 - id: '1534707315306'
   alias: Eteindre quand assez lumineux
@@ -188,7 +188,7 @@
     entity_id: sensor.temperature_158d00022ecfef
   action:
   - data:
-      entity_id: switch.lampe6
+      entity_id: switch.dio2
     service: switch.turn_on
 - id: '1537866274697'
   alias: Switch salon OFF
@@ -314,5 +314,5 @@
   condition: []
   action:
   - data:
-      entity_id: switch.lampe6
+      entity_id: switch.dio2
     service: switch.turn_off

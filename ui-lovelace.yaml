@@ -33,7 +33,6 @@ views:
         entities:
           - switch.zapo3131
           - switch.zapo3132
-          - switch.zapo3133
         image: /local/2018-09-14 21.36.23.jpg
       - type: glance
         title: Salle de bains
@@ -176,6 +175,7 @@ views:
           - switch.zapo3131
           - switch.zapo3132
           - switch.zapo3133
+          - switch.zapo3134
         image: /local/2018-09-14 21.36.23.jpg
       - type: vertical-stack
         cards:
@@ -200,11 +200,19 @@ views:
     id: salle_de_bains
     icon: mdi:shower
     cards:
-      - type: glance
-        column_width: calc(100%)
-        entities:
-          - entity: binary_sensor.water_leak_sensor_158d0002705267
-            name: Sol placard
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            entity: switch.dio2
+            name: Ventilateur
+            icon: mdi:fan
+            tap_action: call-service
+            service: switch.toggle
+          - type: glance
+            column_width: calc(100%)
+            entities:
+              - entity: binary_sensor.water_leak_sensor_158d0002705267
+                name: Sol placard
       - type: vertical-stack
         cards:
           - type: gauge

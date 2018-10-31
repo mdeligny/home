@@ -10,11 +10,11 @@
     "0710090041040000":
       name: table
     0b1100310184c6da01010f80:
-      name: led_cuisine
+      name: dio1
     0b1100350184c6da02010f70:
-      name: lampe6
+      name: dio2
     0b1100360184c6da03010f70:
-      name: lampe7
+      name: dio3
     "0710090041050000":
       name: zapO313-1
     "0710090041060000":
