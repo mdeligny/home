@@ -16,15 +16,15 @@
     0b1100360184c6da03010f70:
       name: lampe7
     "0710090041050000":
-      name: zap1
+      name: zapO313-1
     "0710090041060000":
-      name: zap2
-    "0710090041011000":
-      name: zap3
-    "0710090041012000":
-      name: zap4
-    "0710090041013000":
-      name: zap5
+      name: zapO313-2
+    "0710090043070000":
+      name: zapO313-3
+    "0710090043080400":
+      name: zapO313-4
+    "0710090043090500":
+      name: zapO313-5
 
 #- platform: rest
 #  resource: http://192.168.1.30/bose/power
