@@ -31,8 +31,8 @@ views:
         title: Chambre
         navigation_path: /lovelace/chambre
         entities:
-          - switch.led_cuisine
-          - switch.lampe6
+          - switch.zapo3131
+          - switch.zapo3132
           - switch.zapo3133
         image: /local/2018-09-14 21.36.23.jpg
       - type: glance
@@ -173,8 +173,8 @@ views:
         title: Chambre
         show_header_toggle: false
         entities:
-          - switch.led_cuisine
-          - switch.lampe6
+          - switch.zapo3131
+          - switch.zapo3132
           - switch.zapo3133
         image: /local/2018-09-14 21.36.23.jpg
       - type: vertical-stack

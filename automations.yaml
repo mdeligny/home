@@ -129,7 +129,7 @@
   condition: []
   action:
   - data:
-      entity_id: switch.led_cuisine
+      entity_id: switch.zapo3131
     service: switch.toggle
 - id: '1534707315306'
   alias: Eteindre quand assez lumineux
@@ -185,7 +185,7 @@
   condition: []
   action:
   - data:
-      entity_id: switch.lampe6
+      entity_id: switch.zapo3132
     service: switch.toggle
 - id: '1537866274697'
   alias: Switch salon OFF
@@ -263,7 +263,7 @@
   condition: []
   action:
   - data:
-      entity_id: switch.led_cuisine
+      entity_id: switch.zapo3131
     service: switch.turn_on
 - id: '1539759631228'
   alias: Simulation présence soir OFF
@@ -273,7 +273,7 @@
   condition: []
   action:
   - data:
-      entity_id: switch.led_cuisine
+      entity_id: switch.zapo3131
     service: switch.turn_off
   - data:
       entity_id: scene.salon_off
