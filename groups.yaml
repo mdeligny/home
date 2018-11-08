@@ -2,6 +2,24 @@
 #                               LIGHTS                                          #
 #################################################################################
 
+lights:
+  name: All lights
+  view: no
+  icon: mdi:lightbulb
+  entities:
+    - switch.table
+    - switch.salon
+    - switch.canape
+    - light.gateway_light_7811dcb7e440
+    - switch.guirlande
+    - switch.dio1
+    - switch.dio3
+    - switch.zapo3131
+    - switch.zapo3132
+    - switch.zapo3133
+    - switch.zapo3134
+    
+    
 # Living room
 lumiere_salon:
   name: lumiere_salon

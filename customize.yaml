@@ -144,7 +144,8 @@ sensor.yw_day3_temperature_max:
 sensor.yw_day3_temperature_min:
   friendly_name: Min
 switch.dio3:
-  friendly_name: dio3
+  friendly_name: Cave à vins
+  icon: mdi:bottle-wine
 group.sdb:
   friendly_name: Salle de bain
 sensor.temperature_158d0001f51ff7:
@@ -215,3 +216,6 @@ switch.zapo3134:
   icon: mdi:hanger
 binary_sensor.door_window_sensor_158d00023295f0:
   friendly_name: Dressing Marion
+switch.dio1:
+  friendly_name: Plan de travail cuisine
+  icon: mdi:led-strip

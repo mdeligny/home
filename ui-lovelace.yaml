@@ -44,7 +44,7 @@ views:
           - sensor.temperature_158d00022ecfef
       - type: glance
         title: Salon
-        column_width: calc(100% / 4)
+        column_width: calc(100% / 3)
         show_header_toggle: false
         show_name: false
         entities:
@@ -90,32 +90,38 @@ views:
 
 ################################
 #
-#       LIVING ROOM
+#       KITCHEN
 #
 ################################
-
-
-  - title: salon
-    icon: mdi:sofa
-    id: salon
+  - title: Cuisine
+    icon: mdi:fridge
+    id: cuisine
     cards:
+      - type: entity-button
+        entity: switch.dio1
+        name: Plan de travail
+        icon: mdi:led-strip
+        tap_action: call-service
+        service: switch.toggle
       - type: glance
-        title: Salon
-        column_width: calc(100% / 4)
-        show_header_toggle: false
-        show_name: false
+        title: Cuisine
+        column_width: calc(100% / 2)
         entities:
-          - sensor.temperature_158d0001f51ff7
-          - sensor.pressure_158d0001f51ff7
-          - sensor.humidity_158d0001f51ff7
-          - sensor.illumination_7811dcb7e440
-      - type: picture-glance
-        title: Salon
-        entities:
-          - switch.table
-          - switch.salon
-          - switch.canape
-        image: /local/2018-09-15 09.21.51.jpg
+          - entity: sensor.decteur_co_sensor_status
+            name: CO
+          - entity: binary_sensor.water_leak_sensor_158d000270522b
+            name: Evier
+
+
+################################
+#
+#       DINING ROOM
+#
+################################        
+  - title: Salle à manger
+    icon: mdi:silverware-fork-knife
+    id: salle_a_manger
+    cards:
       - type: picture-glance
         title: "Salle à manger"
         navigation_path: /lovelace/salon
@@ -123,6 +129,42 @@ views:
           - light.gateway_light_7811dcb7e440
           - switch.guirlande
         image: /local/2018-09-14 21.38.16.jpg
+      - type: glance
+        title: Salon
+        column_width: calc(100% / 1)
+        show_header_toggle: false
+        show_name: false
+        entities:
+          - sensor.illumination_7811dcb7e440
+    
+################################
+#
+#       LIVING ROOM
+#
+################################
+
+
+  - title: Salon
+    icon: mdi:sofa
+    id: salon
+    cards:
+      - type: glance
+        title: Salon
+        column_width: calc(100% / 3)
+        show_header_toggle: false
+        show_name: false
+        entities:
+          - sensor.temperature_158d0001f51ff7
+          - sensor.pressure_158d0001f51ff7
+          - sensor.humidity_158d0001f51ff7
+      - type: picture-glance
+        title: Salon
+        entities:
+          - switch.table
+          - switch.salon
+          - switch.canape
+          - switch.dio3
+        image: /local/2018-09-15 09.21.51.jpg
       - type: picture-glance
         title: TV
         entities:
@@ -274,6 +316,20 @@ views:
         entities:
           - entity: binary_sensor.water_leak_sensor_158d0002705267
             name: Sol placard
+      - type: entities
+        title: Lumières
+        entities: 
+          - switch.table
+          - switch.salon
+          - switch.canape
+          - light.gateway_light_7811dcb7e440
+          - switch.guirlande
+          - switch.dio1
+          - switch.dio3
+          - switch.zapo3131
+          - switch.zapo3132
+          - switch.zapo3133
+          - switch.zapo3134
 #      - type: entities
 #        title: Simulation présence
 #        entities:
@@ -282,3 +338,30 @@ views:
 #          - automation.simulation_presence_soiree_on
 #          - automation.simulation_presence_soir_on
 #          - automation.simulation_presence_soir_off
+
+################################
+#
+#       MEDIA
+#
+################################
+
+  - title: Media
+    icon: mdi:play-circle
+    id: media
+    cards:
+      - type: picture-glance
+        title: TV
+        entities:
+          - switch.tv
+          - script.1516560084710
+          - script.1516560429398
+          - script.1516562409619
+          - script.1516561192028
+        state_image:
+          "on": /local/2018-09-15 10.37.30.jpg
+          "off": /local/2018-09-15 10.35.01.jpg
+        entity: switch.tv
+      - type: media-control
+        entity: media_player.salon
+      - type: media-control
+        entity: media_player.salon_2
