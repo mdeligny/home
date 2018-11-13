@@ -10,6 +10,7 @@ views:
     icon: mdi:home
     cards:
       - type: picture-glance
+        id: homepictureglancesalon
         title: Salon
         navigation_path: /lovelace/salon
         entities:
@@ -21,6 +22,7 @@ views:
           - script.1519237132719
         image: /local/2018-09-15 09.21.51.jpg
       - type: picture-glance
+        id: homepictureglancesalleamanger
         title: "Salle à manger"
         navigation_path: /lovelace/salon
         entities:
@@ -28,6 +30,7 @@ views:
           - switch.guirlande
         image: /local/2018-09-14 21.38.16.jpg
       - type: picture-glance
+        id: homepictureglancechambre
         title: Chambre
         navigation_path: /lovelace/chambre
         entities:
@@ -35,6 +38,7 @@ views:
           - switch.zapo3132
         image: /local/2018-09-14 21.36.23.jpg
       - type: glance
+        id: homeglancesalledebains
         title: Salle de bains
         column_width: calc(100% / 2)
         show_header_toggle: false
@@ -43,6 +47,7 @@ views:
           - sensor.humidity_158d00022ecfef
           - sensor.temperature_158d00022ecfef
       - type: glance
+        id: homeglancesalon
         title: Salon
         column_width: calc(100% / 3)
         show_header_toggle: false
@@ -53,6 +58,7 @@ views:
           - sensor.humidity_158d0001f51ff7
           - sensor.illumination_7811dcb7e440
       - type: glance
+        id: homeglancechambre
         title: Chambre
         show_header_toggle: false
         column_width: calc(100% / 3)
@@ -62,8 +68,10 @@ views:
           - sensor.mitemp_bt_temperature
           - sensor.mitemp_bt_battery
       - type: weather-forecast
+        id: homemeteo
         entity: weather.yweather
       - type: glance
+        id: homesecurite
         title: "Sécurité"
         show_header_toggle: false
         column_width: calc(100% / 3)
@@ -75,6 +83,7 @@ views:
           - entity: sensor.decteur_co_sensor_status
             name: CO
       - type: entity-filter
+        id: homepresence
         entities:
           - entity: device_tracker.androidf08fbf0c26decf7ehome
             name: Martin
@@ -84,6 +93,7 @@ views:
           - home
         card:
           type: glance
+          id: homeglancepresence
           column_width: calc(100% / 3)
           show_state: false
           title: Présence
@@ -98,12 +108,14 @@ views:
     id: cuisine
     cards:
       - type: entity-button
+        id : cuisineentitybuttonplandetravail
         entity: switch.dio1
         name: Plan de travail
         icon: mdi:led-strip
         tap_action: call-service
         service: switch.toggle
       - type: glance
+        id: cuisineglancecuisine
         title: Cuisine
         column_width: calc(100% / 2)
         entities:
@@ -117,13 +129,14 @@ views:
 #
 #       DINING ROOM
 #
-################################        
+################################
   - title: Salle à manger
     icon: mdi:silverware-fork-knife
     id: salle_a_manger
     cards:
       - type: picture-glance
         title: "Salle à manger"
+        id: salleamangerpictureglancesalleamanger
         navigation_path: /lovelace/salon
         entities:
           - light.gateway_light_7811dcb7e440
@@ -131,12 +144,13 @@ views:
         image: /local/2018-09-14 21.38.16.jpg
       - type: glance
         title: Salon
+        id: salleamangerglancesalon
         column_width: calc(100% / 1)
         show_header_toggle: false
         show_name: false
         entities:
           - sensor.illumination_7811dcb7e440
-    
+
 ################################
 #
 #       LIVING ROOM
@@ -150,6 +164,7 @@ views:
     cards:
       - type: glance
         title: Salon
+        id: salonglancesalon
         column_width: calc(100% / 3)
         show_header_toggle: false
         show_name: false
@@ -159,6 +174,7 @@ views:
           - sensor.humidity_158d0001f51ff7
       - type: picture-glance
         title: Salon
+        id: salonpictureglancesalon
         entities:
           - switch.table
           - switch.salon
@@ -167,6 +183,7 @@ views:
         image: /local/2018-09-15 09.21.51.jpg
       - type: picture-glance
         title: TV
+        id: salonpictureglancetv
         entities:
           - switch.tv
           - script.1516560084710
@@ -179,6 +196,7 @@ views:
         entity: switch.tv
       - type: glance
         title: Porte fenêtre
+        id: salonglanceportefenetre
         column_width: calc(100% / 2)
         entities:
           - entity: binary_sensor.door_window_sensor_158d00022da897
@@ -186,17 +204,21 @@ views:
           - entity: binary_sensor.door_window_sensor_158d000232b1c3
             name: Droite
       - type: media-control
+        id: salonmediacontrolsalon
         entity: media_player.salon
       - type: media-control
+        id: salonmediacontrolsalon2
         entity: media_player.salon_2
       - type: sensor
         entity: sensor.humidity_158d0001f51ff7
         name: Humidité
+        id: salonsensorhumidite
         height: 100
         line_color: "#3498db"
       - type: sensor
         entity: sensor.temperature_158d0001f51ff7
         name: Température
+        id: salonsensortemperature
         height: 100
         line_color: "#3498db"
 
@@ -212,6 +234,7 @@ views:
     cards:
       - type: picture-glance
         title: Chambre
+        id: chambrepictureglancechambre
         show_header_toggle: false
         entities:
           - switch.zapo3131
@@ -220,15 +243,18 @@ views:
           - switch.zapo3134
         image: /local/2018-09-14 21.36.23.jpg
       - type: vertical-stack
+        id: chambreverticalstack
         cards:
           - type: sensor
             entity: sensor.mitemp_bt_temperature
             name: Température
+            id: chambresensortemperature
             height: 100
             line_color: "#3498db"
           - type: sensor
             entity: sensor.mitemp_bt_humidity
             name: Humidité
+            id: chambresensorhumidite
             height: 100
             line_color: "#3498db"
 
@@ -248,10 +274,12 @@ views:
             entity: switch.dio2
             name: Ventilateur
             icon: mdi:fan
+            id: salledebainsentitybuttonventilateur
             tap_action: call-service
             service: switch.toggle
           - type: glance
             column_width: calc(100%)
+            id: salledebainsglancesolplacard
             entities:
               - entity: binary_sensor.water_leak_sensor_158d0002705267
                 name: Sol placard
@@ -263,15 +291,18 @@ views:
             unit_of_measurement: '%'
             min: 0
             max: 100
+            id: salledebainsgaugehumidite
           - type: gauge
             entity: sensor.temperature_158d00022ecfef
             title: Température
             unit_of_measurement: '°C'
             min: 15
             max: 30
+            id: salledebainsgaugetemperature
       - type: sensor
         entity: sensor.temperature_158d00022ecfef
         name: Température
+        id: salledebainssensortemperature
         height: 100
         line_color: "#3498db"
 
@@ -288,6 +319,7 @@ views:
     cards:
       - type: glance
         title: Entrée
+        id: securiteglanceentree
         column_width: calc(100% / 2)
         entities:
           - entity: binary_sensor.door_window_sensor_158d0001e444dd
@@ -296,6 +328,7 @@ views:
             name: WC
       - type: glance
         title: Cuisine
+        id: securiteglancecuisine
         column_width: calc(100% / 2)
         entities:
           - entity: sensor.decteur_co_sensor_status
@@ -304,6 +337,7 @@ views:
             name: Evier
       - type: glance
         title: Salon
+        id: securiteglancesalon
         column_width: calc(100% / 2)
         entities:
           - entity: binary_sensor.door_window_sensor_158d00022da897
@@ -312,13 +346,15 @@ views:
             name: Droite
       - type: glance
         title: Salle de bains
+        id: securiteglancesalledebains
         column_width: calc(100% / 2)
         entities:
           - entity: binary_sensor.water_leak_sensor_158d0002705267
             name: Sol placard
       - type: entities
+        id: securiteentitieslumieres
         title: Lumières
-        entities: 
+        entities:
           - switch.table
           - switch.salon
           - switch.canape
@@ -351,6 +387,7 @@ views:
     cards:
       - type: picture-glance
         title: TV
+        id: mediapictureglancetv
         entities:
           - switch.tv
           - script.1516560084710
@@ -362,6 +399,8 @@ views:
           "off": /local/2018-09-15 10.35.01.jpg
         entity: switch.tv
       - type: media-control
+        id: mediamediacontrolsalon
         entity: media_player.salon
       - type: media-control
+        id: mediamediacontrolsalon2
         entity: media_player.salon_2
