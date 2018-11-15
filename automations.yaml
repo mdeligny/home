@@ -153,6 +153,9 @@
   - condition: state
     entity_id: device_tracker.androidf08fbf0c26decf7ehome
     state: not_home
+  - condition: state
+    entity_id: device_tracker.android2home
+    state: not_home
   action:
   - data:
       message: Ouverture de la porte
