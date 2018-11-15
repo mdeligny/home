@@ -87,8 +87,8 @@ views:
         entities:
           - entity: device_tracker.androidf08fbf0c26decf7ehome
             name: Martin
-          - device_tracker.galaxy_a5_2016
-          - device_tracker.galaxya520161home
+          - entity: device_tracker.android2home
+            name: Marion
         state_filter:
           - home
         card:
