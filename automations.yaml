@@ -263,3 +263,22 @@
   - data:
       entity_id: switch.dio2
     service: switch.turn_off
+- id: '1542788688359'
+  alias: Morning
+  trigger:
+  - entity_id: device_tracker.androidf08fbf0c26decf7ehome
+    from: not_home
+    platform: state
+    to: home
+  condition:
+  - after: 06:30:00
+    before: 07:30:00
+    condition: time
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  action:
+  - alias: ''
+    data:
+      entity_id: script.1542788438684
+    service: script.turn_on
