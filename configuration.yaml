@@ -140,6 +140,9 @@ xiaomi_aqara:
     - key: !secret xiaomi_aqara_key
       mac: 78:11:DC:B7:E4:40
 
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_secret
 
 
 #################################################################################
