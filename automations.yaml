@@ -282,3 +282,21 @@
     data:
       entity_id: script.1542788438684
     service: script.turn_on
+- id: '1546267203761'
+  alias: Info transport event
+  trigger:
+  - entity_id: calendar.martindelignygmailcom
+    platform: state
+    to: 'on'
+  condition: 
+    condition: template
+    value_template: "{{ states.calendar.martindelignygmailcom.attributes.location != '' }}"
+  action:
+  - data:
+      message: Il y a actuellement {{ states.sensor.vlille_st_andre_mairie.state }}
+        vélos disponibles à la mairie, {{ states.sensor.parking_nouveau_siecle.state
+        }} places au parking nouveau siècle et {{ states.sensor.parking_vieux_lille.state
+        }} au parking vieux Lille.
+      title: Info transports pour {{ states.calendar.martindelignygmailcom.attributes.message
+        }}
+    service: notify.notify
