@@ -50,7 +50,39 @@
   currency: Ethereum
   display_currency: EUR
 
+- platform: rest
+  resource: https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=disponibilite-parkings&facet=libelle&facet=ville&facet=etat&refine.libelle=Parking+Vieux+Lille
+  name: Parking vieux lille
+  value_template: '{{ value_json.records[0].fields.dispo }}'
+  unit_of_measurement: "places"
+  json_attributes: 
+    - records[0].fields.max
+    - records[0].fields.aff
+  scan_interval: 300
 
+- platform: rest
+  resource: https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=disponibilite-parkings&facet=libelle&facet=ville&facet=etat&refine.libelle=Parking+Nouveau+Siecle
+  name: Parking nouveau siècle
+  value_template: '{{ value_json.records[0].fields.dispo }}'
+  unit_of_measurement: "places"
+  json_attributes: 
+    - records[0].fields.max
+    - records[0].fields.aff
+  scan_interval: 300
+
+- platform: rest
+  resource: https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=vlille-realtime&facet=libelle&facet=nom&facet=commune&facet=etat&facet=type&facet=etatconnexion&refine.commune=SAINT+ANDRE+LEZ+LILLE&refine.nom=ST+ANDRE+MAIRIE
+  name: Vlille St André Mairie
+  value_template: '{{ value_json.records[0].fields.nbvelosdispo }}'
+  unit_of_measurement: "vélos"
+  scan_interval: 300
+
+- platform: waze_travel_time
+  origin: 23 Rue Chanzy, 59350 Saint-André-Lez-Lille
+  destination: Rue Chanzy, 59712 Lezennes
+  region: 'EU'
+  realtime: true
+  
 # Flower power
 #- platform: flower_power
 #  username: rojowstyle@gmail.com

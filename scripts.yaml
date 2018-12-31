@@ -140,4 +140,13 @@
   - data:
       entity_id: script.1516561192028
     service: script.turn_on
-
+'1542788438684':
+  alias: Morning
+  sequence:
+  - data:
+      entity_id: scene.salon_on
+    service: scene.turn_on
+  - alias: ''
+    data:
+      entity_id: media_player.salon_2
+    service: media_player.media_play

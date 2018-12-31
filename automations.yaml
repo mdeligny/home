@@ -95,7 +95,7 @@
   - event_data:
       click_type: single
       entity_id: binary_sensor.switch_158d000213599d
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
   condition:
   - condition: state
@@ -111,7 +111,7 @@
   - event_data:
       click_type: double
       entity_id: binary_sensor.switch_158d000213599d
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
   condition: []
   action:
@@ -124,7 +124,7 @@
   - event_data:
       click_type: single
       entity_id: binary_sensor.switch_158d0001e5ca75
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
   condition: []
   action:
@@ -167,7 +167,7 @@
   - event_data:
       click_type: single
       entity_id: binary_sensor.switch_158d000213599d
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
   condition:
   - condition: state
@@ -180,7 +180,7 @@
 - id: '1537866148424'
   alias: Réchauffer la SDB le matin
   trigger:
-  - at: 07:00:00
+  - at: 07:30:00
     platform: time
   condition:
   - condition: state
@@ -199,7 +199,7 @@
   - event_data:
       click_type: long_click_press
       entity_id: binary_sensor.switch_158d000213599d
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
   condition: []
   action:
@@ -263,3 +263,22 @@
   - data:
       entity_id: switch.dio2
     service: switch.turn_off
+- id: '1542788688359'
+  alias: Morning
+  trigger:
+  - entity_id: device_tracker.androidf08fbf0c26decf7ehome
+    from: not_home
+    platform: state
+    to: home
+  condition:
+  - after: 06:30:00
+    before: 07:30:00
+    condition: time
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  action:
+  - alias: ''
+    data:
+      entity_id: script.1542788438684
+    service: script.turn_on
