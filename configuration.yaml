@@ -43,6 +43,12 @@ discovery:
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
+input_datetime:
+  heure_rechauffage_sdb:
+    name: Heure du début du réchauffage de la SDB
+    has_date: false
+    has_time: true
+
 # Enables support for tracking state changes over time
 history:
   exclude:

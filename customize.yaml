@@ -226,3 +226,5 @@ sensor.parking_nouveau_siecle:
   icon: mdi:parking
 sensor.vlille_st_andre_mairie:
   icon: mdi:bike
+automation.rechauffer_la_sdb_le_matin:
+  icon: mdi:fan

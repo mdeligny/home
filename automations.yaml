@@ -180,8 +180,9 @@
 - id: '1537866148424'
   alias: Réchauffer la SDB le matin
   trigger:
-  - at: 07:30:00
-    platform: time
+    platform: template
+    value_template: '{{ states(''sensor.time'') == (states.input_datetime.heure_rechauffage_sdb.attributes.timestamp
+      | int | timestamp_custom(''%H:%M'', False)) }}'
   condition:
   - condition: state
     entity_id: binary_sensor.workday_sensor
@@ -288,9 +289,10 @@
   - entity_id: calendar.martindelignygmailcom
     platform: state
     to: 'on'
-  condition: 
+  condition:
     condition: template
-    value_template: "{{ states.calendar.martindelignygmailcom.attributes.location != '' }}"
+    value_template: '{{ states.calendar.martindelignygmailcom.attributes.location
+      != '''' }}'
   action:
   - data:
       message: Il y a actuellement {{ states.sensor.vlille_st_andre_mairie.state }}
@@ -300,3 +302,42 @@
       title: Info transports pour {{ states.calendar.martindelignygmailcom.attributes.message
         }}
     service: notify.notify
+- id: '1546449554993'
+  alias: Switch cuisine
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0002499e96
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: switch.dio1
+    service: switch.toggle
+- id: '1546450711153'
+  alias: Switch music
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0001e7ef36
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.salon_2
+    service: media_player.media_play_pause
+- id: '1546456563488'
+  alias: Switch next song
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d0001e7ef36
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.salon_2
+    service: media_player.media_next_track

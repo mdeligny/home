@@ -45,6 +45,10 @@
       name: decteur_co
       fire_event: True
 
+- platform: time_date
+  display_options:
+    - 'time'
+
 # Finance
 - platform: coinmarketcap
   currency: Ethereum
