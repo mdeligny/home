@@ -216,7 +216,7 @@
     to: 'on'
   action:
   - data:
-      entity_id: switch.zapo3133
+      entity_id: switch.zapo313_3
     service: switch.turn_on
 - id: dressingferme123456789
   alias: Dressing Martin fermé
@@ -227,7 +227,7 @@
     to: 'off'
   action:
   - data:
-      entity_id: switch.zapo3133
+      entity_id: switch.zapo313_3
     service: switch.turn_off
 - id: '1540991000676'
   alias: Dressing Marion ouvert
@@ -239,7 +239,7 @@
   condition: []
   action:
   - data:
-      entity_id: switch.zapo3134
+      entity_id: switch.zapo313_4
     service: switch.turn_on
 - id: '1540991050127'
   alias: Dressing Marion fermé
@@ -251,7 +251,7 @@
   condition: []
   action:
   - data:
-      entity_id: switch.zapo3134
+      entity_id: switch.zapo313_4
     service: switch.turn_off
 - id: '1540994812488'
   alias: Eteindre ventilateur quand assez chaud SDB

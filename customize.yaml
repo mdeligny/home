@@ -202,16 +202,16 @@ weather.yweather:
   friendly_name: Météo Lille
 binary_sensor.door_window_sensor_158d000249045b:
   friendly_name: Dressing
-switch.zapo3131:
+switch.zapo313_1:
   friendly_name: Lampadaire chambre
   icon: mdi:lamp
-switch.zapo3132:
+switch.zapo313_2:
   friendly_name: Guirlande chambre
   icon: mdi:white-balance-sunny
-switch.zapo3133:
+switch.zapo313_3:
   friendly_name: Dressing Martin
   icon: mdi:hanger
-switch.zapo3134:
+switch.zapo313_4:
   friendly_name: Dressing Marion
   icon: mdi:hanger
 binary_sensor.door_window_sensor_158d00023295f0:
