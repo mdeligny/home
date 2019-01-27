@@ -57,14 +57,8 @@
     state: home
   action:
   - data:
-      entity_id: switch.salon
-    service: switch.turn_on
-  - data:
-      entity_id: switch.canape
-    service: switch.turn_on
-  - data:
-      entity_id: switch.guirlande
-    service: switch.turn_on
+      entity_id: scene.salon_on
+    service: scene.turn_on
 - action:
   - data:
       message: L'humidité de la salle de bains a dépassé les 60%
