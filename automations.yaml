@@ -174,14 +174,14 @@
 - id: '1537866148424'
   alias: Réchauffer la SDB le matin
   trigger:
-    platform: template
+  - platform: template
     value_template: '{{ states(''sensor.time'') == (states.input_datetime.heure_rechauffage_sdb.attributes.timestamp
       | int | timestamp_custom(''%H:%M'', False)) }}'
   condition:
   - condition: state
     entity_id: binary_sensor.workday_sensor
     state: 'on'
-  - below: '21'
+  - below: '20'
     condition: numeric_state
     entity_id: sensor.temperature_158d00022ecfef
   action:
@@ -272,6 +272,9 @@
   - condition: state
     entity_id: binary_sensor.workday_sensor
     state: 'on'
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
   action:
   - alias: ''
     data:
@@ -335,3 +338,22 @@
   - data:
       entity_id: media_player.salon_2
     service: media_player.media_next_track
+- id: '1549370577353'
+  alias: Programme TV
+  trigger:
+  - at: '20:00:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: device_tracker.androidf08fbf0c26decf7ehome
+    state: home
+  - condition: state
+    entity_id: calendar.martindelignygmailcom
+    state: 'off'
+  action:
+  - data:
+      message: 'TF1: {{ states.sensor.tf1.state }}; France 2: {{ states.sensor.france_2.state
+        }}; France 3: {{ states.sensor.france_3.state }}; M6: {{ states.sensor.m6.state
+        }} '
+      title: Programme TV
+    service: notify.notify

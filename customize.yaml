@@ -228,3 +228,11 @@ sensor.vlille_st_andre_mairie:
   icon: mdi:bike
 automation.rechauffer_la_sdb_le_matin:
   icon: mdi:fan
+sensor.m6:
+  icon: mdi:television
+sensor.tf1:
+  icon: mdi:television
+sensor.france_2:
+  icon: mdi:television
+sensor.france_3:
+  icon: mdi:television

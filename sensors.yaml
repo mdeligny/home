@@ -87,6 +87,26 @@
   region: 'EU'
   realtime: true
   
+- platform: scrape
+  resource: http://www.programme-tv.net
+  name: TF1
+  select: "#channel-192 .prog_name"
+  
+- platform: scrape
+  resource: http://www.programme-tv.net
+  name: France 2
+  select: "#channel-4 .prog_name"
+
+- platform: scrape
+  resource: http://www.programme-tv.net
+  name: France 3
+  select: "#channel-80 .prog_name"
+  
+- platform: scrape
+  resource: http://www.programme-tv.net
+  name: M6
+  select: "#channel-118 .prog_name"
+
 # Flower power
 #- platform: flower_power
 #  username: rojowstyle@gmail.com
