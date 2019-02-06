@@ -109,13 +109,10 @@
 
 - platform: template
     sensors:
-      sun_setting_time:
-        friendly_name: "Sun setting time"
-        unit_of_measurement: 'H'
+      sunset:
         value_template: "{{ state_attr('sun.sun', 'next_setting') }}"
-      sun_rising_time:
-        friendly_name: "Sun rising time"
-        unit_of_measurement: 'H'
+      
+      sunrise:
         value_template: "{{ state_attr('sun.sun', 'next_rising') }}"
 
 # Flower power
