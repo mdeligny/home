@@ -113,9 +113,6 @@
         friendly_name: "Sun setting time"
         unit_of_measurement: 'H'
         value_template: "{{ state_attr('sun.sun', 'next_setting') }}"
-
-- platform: template
-    sensors:
       sun_rising_time:
         friendly_name: "Sun rising time"
         unit_of_measurement: 'H'
