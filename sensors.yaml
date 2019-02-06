@@ -112,8 +112,8 @@
       sunset:
         value_template: "{{ state_attr('sun.sun', 'next_setting') }}"
       
-      sunrise:
-        value_template: "{{ state_attr('sun.sun', 'next_rising') }}"
+#      sunrise:
+#        value_template: "{{ state_attr('sun.sun', 'next_rising') }}"
 
 # Flower power
 #- platform: flower_power
