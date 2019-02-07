@@ -107,6 +107,11 @@
   name: M6
   select: "#channel-118 .prog_name"
 
+- platform: template
+  sensors:
+    sunset:
+      value_template: {{as_timestamp(state_attr('sun.sun', 'next_setting'))|timestamp_custom('%Hh%M')}}
+
 # Flower power
 #- platform: flower_power
 #  username: rojowstyle@gmail.com
