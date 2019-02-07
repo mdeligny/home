@@ -110,7 +110,7 @@
 - platform: template
   sensors:
     sunset:
-      value_template: {{as_timestamp(state_attr('sun.sun', 'next_setting'))|timestamp_custom('%Hh%M')}}
+      value_template: "{{as_timestamp(state_attr('sun.sun', 'next_setting'))|timestamp_custom('%Hh%M')}}"
 
 # Flower power
 #- platform: flower_power
