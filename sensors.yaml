@@ -59,7 +59,7 @@
   name: Parking vieux lille
   value_template: '{{ value_json.records[0].fields.dispo }}'
   unit_of_measurement: "places"
-  json_attributes: 
+  json_attributes:
     - records[0].fields.max
     - records[0].fields.aff
   scan_interval: 300
@@ -69,7 +69,7 @@
   name: Parking nouveau siècle
   value_template: '{{ value_json.records[0].fields.dispo }}'
   unit_of_measurement: "places"
-  json_attributes: 
+  json_attributes:
     - records[0].fields.max
     - records[0].fields.aff
   scan_interval: 300
@@ -86,12 +86,12 @@
   destination: Rue Chanzy, 59712 Lezennes
   region: 'EU'
   realtime: true
-  
+
 - platform: scrape
   resource: http://www.programme-tv.net
   name: TF1
   select: "#channel-192 .prog_name"
-  
+
 - platform: scrape
   resource: http://www.programme-tv.net
   name: France 2
@@ -101,16 +101,33 @@
   resource: http://www.programme-tv.net
   name: France 3
   select: "#channel-80 .prog_name"
-  
+
 - platform: scrape
   resource: http://www.programme-tv.net
   name: M6
   select: "#channel-118 .prog_name"
 
+- platform: scrape
+  resource: https://www.programme-tv.net/programme/cable-adsl-satellite/
+  name: bein1
+  select: "#channel-1290 .prog_name"
+
+- platform: scrape
+  resource: https://www.programme-tv.net/programme/cable-adsl-satellite/
+  name: bein2
+  select: "#channel-1304 .prog_name"
+
+- platform: scrape
+  resource: https://www.programme-tv.net/programme/cable-adsl-satellite/
+  name: bein3
+  select: "#channel-1335 .prog_name"
+
 - platform: template
   sensors:
     sunset:
       value_template: "{{as_timestamp(state_attr('sun.sun', 'next_setting'))|timestamp_custom('%Hh%M')}}"
+    sunrise:
+      value_template: "{{as_timestamp(state_attr('sun.sun', 'next_rising'))|timestamp_custom('%Hh%M')}}"
 
 # Flower power
 #- platform: flower_power
