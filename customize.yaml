@@ -236,3 +236,5 @@ sensor.france_2:
   icon: mdi:television
 sensor.france_3:
   icon: mdi:television
+sensor.sunset:
+  icon: mdi:weather-sunset-down
