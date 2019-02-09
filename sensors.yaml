@@ -45,11 +45,72 @@
       name: decteur_co
       fire_event: True
 
+- platform: time_date
+  display_options:
+    - 'time'
+
 # Finance
 - platform: coinmarketcap
   currency: Ethereum
   display_currency: EUR
 
+- platform: rest
+  resource: https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=disponibilite-parkings&facet=libelle&facet=ville&facet=etat&refine.libelle=Parking+Vieux+Lille
+  name: Parking vieux lille
+  value_template: '{{ value_json.records[0].fields.dispo }}'
+  unit_of_measurement: "places"
+  json_attributes: 
+    - records[0].fields.max
+    - records[0].fields.aff
+  scan_interval: 300
+
+- platform: rest
+  resource: https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=disponibilite-parkings&facet=libelle&facet=ville&facet=etat&refine.libelle=Parking+Nouveau+Siecle
+  name: Parking nouveau siècle
+  value_template: '{{ value_json.records[0].fields.dispo }}'
+  unit_of_measurement: "places"
+  json_attributes: 
+    - records[0].fields.max
+    - records[0].fields.aff
+  scan_interval: 300
+
+- platform: rest
+  resource: https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=vlille-realtime&facet=libelle&facet=nom&facet=commune&facet=etat&facet=type&facet=etatconnexion&refine.commune=SAINT+ANDRE+LEZ+LILLE&refine.nom=ST+ANDRE+MAIRIE
+  name: Vlille St André Mairie
+  value_template: '{{ value_json.records[0].fields.nbvelosdispo }}'
+  unit_of_measurement: "vélos"
+  scan_interval: 300
+
+- platform: waze_travel_time
+  origin: 23 Rue Chanzy, 59350 Saint-André-Lez-Lille
+  destination: Rue Chanzy, 59712 Lezennes
+  region: 'EU'
+  realtime: true
+  
+- platform: scrape
+  resource: http://www.programme-tv.net
+  name: TF1
+  select: "#channel-192 .prog_name"
+  
+- platform: scrape
+  resource: http://www.programme-tv.net
+  name: France 2
+  select: "#channel-4 .prog_name"
+
+- platform: scrape
+  resource: http://www.programme-tv.net
+  name: France 3
+  select: "#channel-80 .prog_name"
+  
+- platform: scrape
+  resource: http://www.programme-tv.net
+  name: M6
+  select: "#channel-118 .prog_name"
+
+- platform: template
+  sensors:
+    sunset:
+      value_template: "{{as_timestamp(state_attr('sun.sun', 'next_setting'))|timestamp_custom('%Hh%M')}}"
 
 # Flower power
 #- platform: flower_power

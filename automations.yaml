@@ -57,14 +57,8 @@
     state: home
   action:
   - data:
-      entity_id: switch.salon
-    service: switch.turn_on
-  - data:
-      entity_id: switch.canape
-    service: switch.turn_on
-  - data:
-      entity_id: switch.guirlande
-    service: switch.turn_on
+      entity_id: scene.salon_on
+    service: scene.turn_on
 - action:
   - data:
       message: L'humidité de la salle de bains a dépassé les 60%
@@ -95,7 +89,7 @@
   - event_data:
       click_type: single
       entity_id: binary_sensor.switch_158d000213599d
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
   condition:
   - condition: state
@@ -111,7 +105,7 @@
   - event_data:
       click_type: double
       entity_id: binary_sensor.switch_158d000213599d
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
   condition: []
   action:
@@ -124,7 +118,7 @@
   - event_data:
       click_type: single
       entity_id: binary_sensor.switch_158d0001e5ca75
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
   condition: []
   action:
@@ -167,7 +161,7 @@
   - event_data:
       click_type: single
       entity_id: binary_sensor.switch_158d000213599d
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
   condition:
   - condition: state
@@ -180,13 +174,14 @@
 - id: '1537866148424'
   alias: Réchauffer la SDB le matin
   trigger:
-  - at: 07:00:00
-    platform: time
+  - platform: template
+    value_template: '{{ states(''sensor.time'') == (states.input_datetime.heure_rechauffage_sdb.attributes.timestamp
+      | int | timestamp_custom(''%H:%M'', False)) }}'
   condition:
   - condition: state
     entity_id: binary_sensor.workday_sensor
     state: 'on'
-  - below: '21'
+  - below: '20'
     condition: numeric_state
     entity_id: sensor.temperature_158d00022ecfef
   action:
@@ -199,7 +194,7 @@
   - event_data:
       click_type: long_click_press
       entity_id: binary_sensor.switch_158d000213599d
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
   condition: []
   action:
@@ -215,7 +210,7 @@
     to: 'on'
   action:
   - data:
-      entity_id: switch.zapo3133
+      entity_id: switch.zapo313_3
     service: switch.turn_on
 - id: dressingferme123456789
   alias: Dressing Martin fermé
@@ -226,7 +221,7 @@
     to: 'off'
   action:
   - data:
-      entity_id: switch.zapo3133
+      entity_id: switch.zapo313_3
     service: switch.turn_off
 - id: '1540991000676'
   alias: Dressing Marion ouvert
@@ -238,7 +233,7 @@
   condition: []
   action:
   - data:
-      entity_id: switch.zapo3134
+      entity_id: switch.zapo313_4
     service: switch.turn_on
 - id: '1540991050127'
   alias: Dressing Marion fermé
@@ -250,7 +245,7 @@
   condition: []
   action:
   - data:
-      entity_id: switch.zapo3134
+      entity_id: switch.zapo313_4
     service: switch.turn_off
 - id: '1540994812488'
   alias: Eteindre ventilateur quand assez chaud SDB
@@ -277,8 +272,88 @@
   - condition: state
     entity_id: binary_sensor.workday_sensor
     state: 'on'
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
   action:
   - alias: ''
     data:
       entity_id: script.1542788438684
     service: script.turn_on
+- id: '1546267203761'
+  alias: Info transport event
+  trigger:
+  - entity_id: calendar.martindelignygmailcom
+    platform: state
+    to: 'on'
+  condition:
+    condition: template
+    value_template: '{{ states.calendar.martindelignygmailcom.attributes.location
+      != '''' }}'
+  action:
+  - data:
+      message: Il y a actuellement {{ states.sensor.vlille_st_andre_mairie.state }}
+        vélos disponibles à la mairie, {{ states.sensor.parking_nouveau_siecle.state
+        }} places au parking nouveau siècle et {{ states.sensor.parking_vieux_lille.state
+        }} au parking vieux Lille.
+      title: Info transports pour {{ states.calendar.martindelignygmailcom.attributes.message
+        }}
+    service: notify.notify
+- id: '1546449554993'
+  alias: Switch cuisine
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0002499e96
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: switch.dio1
+    service: switch.toggle
+- id: '1546450711153'
+  alias: Switch music
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0001e7ef36
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.salon_2
+    service: media_player.media_play_pause
+- id: '1546456563488'
+  alias: Switch next song
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d0001e7ef36
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.salon_2
+    service: media_player.media_next_track
+- id: '1549370577353'
+  alias: Programme TV
+  trigger:
+  - at: '20:00:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: device_tracker.androidf08fbf0c26decf7ehome
+    state: home
+  - condition: state
+    entity_id: calendar.martindelignygmailcom
+    state: 'off'
+  action:
+  - data:
+      message: 'TF1: {{ states.sensor.tf1.state }}; France 2: {{ states.sensor.france_2.state
+        }}; France 3: {{ states.sensor.france_3.state }}; M6: {{ states.sensor.m6.state
+        }} '
+      title: Programme TV
+    service: notify.notify
