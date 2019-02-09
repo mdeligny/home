@@ -238,3 +238,9 @@ sensor.france_3:
   icon: mdi:television
 sensor.sunset:
   icon: mdi:weather-sunset-down
+sensor.bein1:
+  icon: mdi:television
+sensor.bein2:
+  icon: mdi:television
+sensor.bein3:
+  icon: mdi:television
