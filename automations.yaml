@@ -352,8 +352,12 @@
     state: 'off'
   action:
   - data:
-      message: 'TF1: {{ states.sensor.tf1.state }}; France 2: {{ states.sensor.france_2.state
-        }}; France 3: {{ states.sensor.france_3.state }}; M6: {{ states.sensor.m6.state
-        }} '
+      message: 'TF1: {{ states.sensor.tf1.state }};
+      France 2: {{ states.sensor.france_2.state}};
+      France 3: {{ states.sensor.france_3.state }};
+      M6: {{ states.sensor.m6.state}};
+      Bein 1: {{ states.sensor.bein1.state}};
+      Bein 2: {{ states.sensor.bein2.state}};
+      Bein 3: {{ states.sensor.bein3.state}}'
       title: Programme TV
     service: notify.notify
