@@ -244,3 +244,5 @@ sensor.bein2:
   icon: mdi:television
 sensor.bein3:
   icon: mdi:television
+sensor.sunrise:
+  icon: mdi:weather-sunset-up
