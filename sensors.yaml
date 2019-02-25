@@ -59,42 +59,49 @@
   name: TF1
   select: "#channel-192 .prog_name"
   attribute: title
+  scan_interval: 7200
 
 - platform: scrape
   resource: http://www.programme-tv.net
   name: France 2
   select: "#channel-4 .prog_name"
   attribute: title
+  scan_interval: 7200
 
 - platform: scrape
   resource: http://www.programme-tv.net
   name: France 3
   select: "#channel-80 .prog_name"
   attribute: title
+  scan_interval: 7200
 
 - platform: scrape
   resource: http://www.programme-tv.net
   name: M6
   select: "#channel-118 .prog_name"
   attribute: title
+  scan_interval: 7200
 
 - platform: scrape
   resource: https://www.programme-tv.net/programme/cable-adsl-satellite/
   name: bein1
   select: "#channel-1290 .prog_name"
   attribute: title
+  scan_interval: 7200
 
 - platform: scrape
   resource: https://www.programme-tv.net/programme/cable-adsl-satellite/
   name: bein2
   select: "#channel-1304 .prog_name"
   attribute: title
+  scan_interval: 7200
 
 - platform: scrape
   resource: https://www.programme-tv.net/programme/cable-adsl-satellite/
   name: bein3
   select: "#channel-1335 .prog_name"
   attribute: title
+  scan_interval: 7200
 
 - platform: template
   sensors:

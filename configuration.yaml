@@ -99,6 +99,8 @@ updater:
 # Discover some devices automatically
 discovery:
 
+system_health:
+
 input_datetime:
   heure_rechauffage_sdb:
     name: Heure du début du réchauffage de la SDB
