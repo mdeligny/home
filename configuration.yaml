@@ -20,6 +20,8 @@ config:
 recorder:
   db_url: !secret db_access
 
+history:
+
 http:
   base_url: maoutin.duckdns.org
   ssl_certificate: /ssl/fullchain.pem
@@ -94,9 +96,6 @@ plant:
 media_extractor: # Media extractor, used to cast media with a service
 
 media_player:
-#  - platform: spotify
-#    client_id: 39edb7ec9c87422784f04f81fc34b6ea
-#    client_secret: !secret spotify_api_key
 
 # Notifications
 notify:
@@ -114,7 +113,6 @@ device_tracker:
     interval_seconds: 30
     exclude:
       - 192.168.1.30
-#  - platform: bluetooth_tracker
 
 xiaomi_aqara:
   discovery_retry: 10
