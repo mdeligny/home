@@ -113,6 +113,9 @@
 - platform: miflora
   mac: 'C4:7C:8D:6A:10:47'
 
+- platform: miflora
+  mac: 'C4:7C:8D:6A:52:91'
+
 # Flower power
 #- platform: flower_power
 #  username: rojowstyle@gmail.com
