@@ -4,9 +4,9 @@
 
 homeassistant:
   name: Home
-  latitude: 50.6634309
-  longitude: 3.0507688
-  elevation: 23
+  latitude: 50.6634
+  longitude: 3.0529699999999593
+  elevation: 25
   unit_system: metric
   time_zone: Europe/Paris
   customize: !include customize.yaml

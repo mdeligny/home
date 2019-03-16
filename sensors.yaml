@@ -49,8 +49,8 @@
   scan_interval: 300
 
 - platform: waze_travel_time
-  origin: 23 Rue Chanzy, 59350 Saint-André-Lez-Lille
-  destination: Rue Chanzy, 59712 Lezennes
+  origin: 50.6634,3.0529699999999593
+  destination: 50.6112386,3.1186306
   region: 'EU'
   realtime: true
 
