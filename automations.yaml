@@ -1,8 +1,3 @@
-- id: '1515937075509'
-  alias: '[A SUPPRIMER] Eteindre la chromecast quand on éteint la télé'
-  trigger: []
-  condition: []
-  action: []
 - action:
   - data:
       message: Mise à jour Home assistant disponible.
