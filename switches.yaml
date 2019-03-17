@@ -27,27 +27,6 @@
       name: zapO313-5
 
 
-#- platform: rest
-#  resource: http://192.168.1.30/bose/power
-#  name: bose_power
-#  body_on: '{"active": "true"}'
-#  body_off: '{"active": "false"}'
-#  is_on_template: '{{value_json.active}}'
-
-#- platform: rest
-#  resource: http://192.168.1.30/bose/bluetooth
-#  name: bose_bluetooth
-#  body_on: '{"active": "true"}'
-#  body_off: '{"active": "false"}'
-#  is_on_template: '{{value_json.active}}'
-
-#- platform: rest
-#  resource: http://192.168.1.30/bose/aux
-#  name: bose_aux
-#  body_on: '{"active": "true"}'
-#  body_off: '{"active": "false"}'
-#  is_on_template: '{{value_json.active}}'
-
 - platform: broadlink
   host: 192.168.1.11
   mac: '34:ea:34:8e:ef:f0'
