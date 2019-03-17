@@ -83,7 +83,7 @@
       - JgBYAAABJZITExITExMTExMTEhMWEBMTEzYTNxM3FTUTNhM3EzcTExI3ExMVERQREhQSFBMSExMSFBQ2EjcTNxM3EzYTNxQ2EwAFHQABJUoTAAw4AAEmSRMADQU=
     service: switch.broadlink_send_packet_192_168_1_11
   - delay:
-      milliseconds: 20
+      milliseconds: 40
   - data:
       packet:
       - JgBQAAABJpEUEhITExMTExUQEhQTExMTEjcTNxM3EzYTNxM3EzcTEhI4EzcTEhMTEzcUEhI3ExMTExMSEzcTNxQSEjcTExM3EwAFHQABJUoTAA0FAAAAAAAAAAA=
@@ -150,3 +150,58 @@
     data:
       entity_id: media_player.salon_2
     service: media_player.media_play
+'1552837801341':
+  alias: HDMI 1
+  sequence:
+  - data:
+      packet:
+      - JgBYAAABJZITExITExMTExMTEhMWEBMTEzYTNxM3FTUTNhM3EzcTExI3ExMVERQREhQSFBMSExMSFBQ2EjcTNxM3EzYTNxQ2EwAFHQABJUoTAAw4AAEmSRMADQU=
+    service: switch.broadlink_send_packet_192_168_1_11
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJpEUEhITExMTExUQEhQTExMTEjcTNxM3EzYTNxM3EzcTEhI4EzcTEhMTEzcUEhI3ExMTExMSEzcTNxQSEjcTExM3EwAFHQABJUoTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_11
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZITExMSExMTExMTEhMTExMTEzYTNxM3FTUSNxM3FTUTEhMTEzcTNxI3EzcTExM2ExMTNxUREhMTExMTEzYTExM3EwAFHQABJkkTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_11
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZITExMSExMTExMTEhMTExMTEzYTNxM3FTUSNxM3FTUTEhMTEzcTNxI3EzcTExM2ExMTNxUREhMTExMTEzYTExM3EwAFHQABJkkTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_11
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZITExMSExMTExMTEhMTExMTEzYTNxM3FTUSNxM3FTUTEhMTEzcTNxI3EzcTExM2ExMTNxUREhMTExMTEzYTExM3EwAFHQABJkkTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_11
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZITExMSExMTExMTEhMTExMTEzYTNxM3FTUSNxM3FTUTEhMTEzcTNxI3EzcTExM2ExMTNxUREhMTExMTEzYTExM3EwAFHQABJkkTAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_11
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZETExMUEhMSExIUFBITExQRFDYTNxI3EzcUNhQ1EzcUEhIUEzYUEhM3EzYUEhM3ExMVNBMTEzcTEhQSEjgTExI3EwAFHgABJUoUAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_11
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZETExMUEhMSExIUFBITExQRFDYTNxI3EzcUNhQ1EzcUEhIUEzYUEhM3EzYUEhM3ExMVNBMTEzcTEhQSEjgTExI3EwAFHgABJUoUAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_11
+  - delay:
+      milliseconds: 40
+  - data:
+      packet:
+      - JgBQAAABJZETExMUEhMSExIUFBITExQRFDYTNxI3EzcUNhQ1EzcUEhIUEzYUEhM3EzYUEhM3ExMVNBMTEzcTEhQSEjgTExI3EwAFHgABJUoUAA0FAAAAAAAAAAA=
+    service: switch.broadlink_send_packet_192_168_1_11

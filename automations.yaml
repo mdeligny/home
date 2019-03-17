@@ -1,15 +1,8 @@
-- action:
-  - data:
-      entity_id: media_player.salon_2
-    service: media_player.turn_off
-  alias: Eteindre la chromecast quand on éteint la télé
+- id: '1515937075509'
+  alias: '[A SUPPRIMER] Eteindre la chromecast quand on éteint la télé'
+  trigger: []
   condition: []
-  id: '1515937075509'
-  trigger:
-  - entity_id: switch.tele_du_salon
-    from: 'on'
-    platform: state
-    to: 'off'
+  action: []
 - action:
   - data:
       message: Mise à jour Home assistant disponible.
@@ -20,32 +13,31 @@
   - entity_id: updater.updater
     platform: state
   id: 937d2ebfc9c244569834ecdfc9d9fda1
-- action:
-  - data:
-      message: La batterie du pot Parrot est faible !
-      title: Home assistant
-    service: notify.notify
-  alias: Alerte pour la batterie du pot
-  condition: []
-  id: '1517163939771'
+- id: '1517163939771'
+  alias: Alerte batterie Citronnier
   trigger:
-  - entity_id: sensor.ficus_battery_level
+  - entity_id: sensor.mi_flora_1_battery
     from: '11'
     platform: state
     to: '10'
-- action:
-  - data:
-      message: Il n'y a plus d'eau dans le pot Parrot
-      title: Home assistant
-    service: notify.notify
-  alias: Alerte sur le niveau d'eau du pot Parrot
   condition: []
-  id: '1517164056017'
+  action:
+  - data:
+      message: La batterie du capteur du Citronnier est faible
+      title: Batterie Citronnier faible
+    service: notify.notify
+- id: '1517164056017'
+  alias: Alerte humidité de la terre
   trigger:
-  - entity_id: sensor.ficus_watering_sensor
-    from: '11'
-    platform: state
-    to: '10'
+  - below: '15'
+    entity_id: sensor.mi_flora_1_moisture
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      message: L'humidité de la terre du citronnier est en dessous de 15%
+      title: Arroser le citronnier
+    service: notify.notify
 - id: '1517944241887'
   alias: Allumer les lumières quand le soleil se couche
   trigger:
@@ -59,30 +51,32 @@
   - data:
       entity_id: scene.salon_on
     service: scene.turn_on
-- action:
+- id: '1524412334022'
+  alias: Notif quand sdb trop humide
+  trigger:
+  - above: '60'
+    entity_id: sensor.humidity_158d00022ecfef
+    for: 00:05:00
+    platform: numeric_state
+  condition: []
+  action:
   - data:
       message: L'humidité de la salle de bains a dépassé les 60%
       title: Salle de bain trop humide
     service: notify.notify
-  alias: Notif quand sdb trop humide
-  condition: []
-  id: '1524412334022'
+- id: '1524415229795'
+  alias: Notif quand humidité sdb normale
   trigger:
-  - above: '60'
+  - below: '60'
     entity_id: sensor.humidity_158d00022ecfef
+    for: 00:05:00
     platform: numeric_state
-- action:
+  condition: []
+  action:
   - data:
       message: Retour à la normale pour l'humidité
       title: Humidité Salle de bain
     service: notify.notify
-  alias: Notif quand humidité sdb normale
-  condition: []
-  id: '1524415229795'
-  trigger:
-  - below: '60'
-    entity_id: sensor.humidity_158d00022ecfef
-    platform: numeric_state
 - id: '1526111922386'
   alias: Switch simple click salon ON
   trigger:
@@ -352,12 +346,33 @@
     state: 'off'
   action:
   - data:
-      message: 'TF1: {{ states.sensor.tf1.state }};
-      France 2: {{ states.sensor.france_2.state}};
-      France 3: {{ states.sensor.france_3.state }};
-      M6: {{ states.sensor.m6.state}};
-      Bein 1: {{ states.sensor.bein1.state}};
-      Bein 2: {{ states.sensor.bein2.state}};
-      Bein 3: {{ states.sensor.bein3.state}}'
+      message: 'TF1: {{ states.sensor.tf1.state }}; France 2: {{ states.sensor.france_2.state}};
+        France 3: {{ states.sensor.france_3.state }}; M6: {{ states.sensor.m6.state}};
+        Bein 1: {{ states.sensor.bein1.state}}; Bein 2: {{ states.sensor.bein2.state}};
+        Bein 3: {{ states.sensor.bein3.state}}'
       title: Programme TV
+    service: notify.notify
+- id: '1552837022629'
+  alias: Set TV as ON when chromecast is playing
+  trigger:
+  - entity_id: media_player.salon_2
+    from: 'off'
+    platform: state
+    to: playing
+  condition: []
+  action:
+  - data:
+      entity_id: switch.tv
+    service: switch.turn_on
+- id: '1552838979718'
+  alias: Alerte engrais citronnier
+  trigger:
+  - below: '350'
+    entity_id: sensor.mi_flora_1_conductivity
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      message: Le citronnier manque d'engrais ...
+      title: Engrais Citronnier faible
     service: notify.notify

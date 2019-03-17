@@ -188,7 +188,7 @@ binary_sensor.door_window_sensor_158d00022da897:
 binary_sensor.door_window_sensor_158d000232b1c3:
   device_class: window
 media_player.salon:
-  friendly_name: Chromecast salon
+  friendly_name: Sonos salon
 group.lumiere_salle_a_manger:
   friendly_name: Salle à manger
   icon: mdi:food
@@ -246,3 +246,7 @@ sensor.bein3:
   icon: mdi:television
 sensor.sunrise:
   icon: mdi:weather-sunset-up
+media_player.salon_2:
+  friendly_name: Chromecast salon
+script.1552837801341:
+  icon: mdi:remote
