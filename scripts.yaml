@@ -144,11 +144,11 @@
   alias: Morning
   sequence:
   - data:
-      entity_id: scene.salon_on
-    service: scene.turn_on
+      entity_id: script.1553025041582
+    service: script.turn_on
   - alias: ''
     data:
-      entity_id: media_player.salon_2
+      entity_id: media_player.salon
     service: media_player.media_play
 '1552837801341':
   alias: HDMI 1
@@ -205,3 +205,12 @@
       packet:
       - JgBQAAABJZETExMUEhMSExIUFBITExQRFDYTNxI3EzcUNhQ1EzcUEhIUEzYUEhM3EzYUEhM3ExMVNBMTEzcTEhQSEjgTExI3EwAFHgABJUoUAA0FAAAAAAAAAAA=
     service: switch.broadlink_send_packet_192_168_1_11
+'1553025041582':
+  alias: Allumer salon si jour levé
+  sequence:
+  - after: sunset
+    before: sunrise
+    condition: sun
+  - data:
+      entity_id: scene.turn_on
+    service: scene.turn_on
