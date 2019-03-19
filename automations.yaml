@@ -261,9 +261,6 @@
   - condition: state
     entity_id: binary_sensor.workday_sensor
     state: 'on'
-  - condition: state
-    entity_id: sun.sun
-    state: below_horizon
   action:
   - alias: ''
     data:
